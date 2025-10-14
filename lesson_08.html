@@ -3,173 +3,192 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GIÁO ÁN – Bài 8: If/Else – Ra quyết định</title>
+<title>Bài 8 – If/Else – Ra quyết định | Hyper One Lesson</title>
 <style>
-*{box-sizing:border-box}body{font-family:Nunito,Arial,sans-serif;margin:0;padding:24px;background:#f9fbff;color:#222}
-h1,h2{margin:0 0 12px}h1{font-size:24px}h2{font-size:18px;color:#3651d3}
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#e8f0ff;color:#3651d3;font-size:12px;margin-right:8px}
-.header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
-.card{background:#fff;border:1px solid #e8eef6;border-radius:12px;padding:16px;margin:12px 0}
-.table{width:100%;border-collapse:collapse;font-size:14px}
-.table th,.table td{border:1px solid #e6e9f2;padding:8px;vertical-align:top}
-.table th{background:#f3f6ff;text-align:left}
-.note{font-size:12px;color:#666}
-.footer{margin-top:24px;font-size:12px;color:#556}
-code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+:root{
+  --blue:#2563eb;
+  --bg:#f9fbff;
+  --text:#1f2937;
+  --border:#e5e7eb;
+  --accent:#3b82f6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  padding-bottom:60px;
+}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+h1,h2,h3{margin-bottom:12px;font-weight:600;color:#111827}
+h1{font-size:30px;margin-top:8px}
+h2{font-size:22px;margin-top:22px;color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{border:1px solid var(--border);padding:8px;vertical-align:top}
+th{background:#eef2ff;text-align:left}
+pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:24px;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.badge{
+  background:#fff;
+  border:1px solid #dbeafe;
+  color:var(--accent);
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+}
+.footer{
+  margin-top:40px;
+  text-align:center;
+  font-size:13px;
+  color:#6b7280;
+  border-top:1px solid var(--border);
+  padding-top:20px;
+}
+.codebox{
+  background:#111827;
+  color:#e0e7ff;
+  padding:14px;
+  border-radius:10px;
+  font-family:ui-monospace,Consolas,monospace;
+  overflow-x:auto;
+}
 </style>
 </head>
 <body>
-  <div class="header">
+<div class="container">
+  <div class="badges">
     <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
-    <span class="badge">Tháng: 10/2025</span>
-    <span class="badge">Bài 08</span>
+    <span class="badge">Bài 8</span>
+    <span class="badge">10/2025</span>
   </div>
-  <h1>Bài 8: If/Else – Ra quyết định</h1>
+  <h1>🧠 If/Else – Ra quyết định</h1>
+  <p><strong>Trinket.io IDE</strong> – nơi học sinh học cách cho máy tính “suy nghĩ có điều kiện”: nếu đúng thì làm A, nếu sai thì làm B.</p>
 
   <div class="card">
-    <h2>Trinket.io IDE <span class="note">(IDE – môi trường lập trình tích hợp)</span></h2>
-  </div>
-
-  <div class="card">
-    <h2>MỤC TIÊU – NĂNG LỰC</h2>
-    <table class="table">
+    <h2>🎯 MỤC TIÊU – NĂNG LỰC</h2>
+    <table>
       <thead><tr><th>#</th><th>Năng lực</th><th>Mục tiêu chi tiết</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu rằng máy tính có thể thực hiện qua lệnh trọng tâm của bài (ví dụ: <code class="mono">if (age >= 10) { /* ... */ } else { /* ... */ }</code>).</td></tr>
-        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết cú pháp (syntax) đúng và chạy được trong Trinket.io.</td></tr>
-        <tr><td>3</td><td>Tốc độ (CPM)</td><td>HS gõ đúng 1 dòng lệnh mẫu trong 15 giây (CPM – Characters per Minute).</td></tr>
-        <tr><td>4</td><td>Nền tảng (logic)</td><td>HS biết thay đổi tham số/nội dung để tạo kết quả khác.</td></tr>
+        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu rằng máy tính cũng có thể “ra quyết định” dựa trên điều kiện.</td></tr>
+        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết cú pháp <code>if (...) { ... } else { ... }</code> và hiểu cách hoạt động.</td></tr>
+        <tr><td>3</td><td>Tốc độ (CPM)</td><td>HS gõ được cấu trúc if/else hoàn chỉnh trong 3 phút.</td></tr>
+        <tr><td>4</td><td>Nền tảng (tư duy logic)</td><td>HS biết phân tích tình huống: nếu... thì..., ngược lại thì...</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="card">
-    <h2>Nguyên tắc “đánh code”</h2>
-    <p><strong>Cú pháp trước → chạy thử → thấy phản hồi → lặp lại → ứng dụng.</strong></p>
-    <p>Ví dụ: <code class="mono">if (age >= 10) { /* ... */ } else { /* ... */ }</code> → máy phản hồi → HS phản ứng, hiểu nguyên lý.</p>
+    <h2>💡 Nguyên tắc “Khi robot biết suy nghĩ”</h2>
+    <p><strong>If/Else là cặp não trái – não phải của lập trình viên.</strong></p>
+    <p>Ví dụ:</p>
+    <div class="codebox">
+      &lt;script&gt;<br>
+      &nbsp;&nbsp;let mood = prompt("Bạn đang vui hay buồn?");<br>
+      &nbsp;&nbsp;if (mood == "vui") {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alert("🤖 Robot cũng vui theo bạn!");<br>
+      &nbsp;&nbsp;} else {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alert("🤖 Robot gửi bạn một cái ôm! ❤️");<br>
+      &nbsp;&nbsp;}<br>
+      &lt;/script&gt;
+    </div>
+    <p>Khi chạy, nếu học sinh nhập “vui”, robot chúc mừng; nếu nhập khác, robot an ủi – giống như bạn thân biết cảm xúc của mình vậy!</p>
   </div>
 
   <div class="card">
-    <h2>PHẦN NỘI DUNG BÀI HỌC</h2>
-    <table class="table">
+    <h2>📚 PHẦN NỘI DUNG BÀI HỌC</h2>
+    <table>
       <thead>
         <tr>
-          <th>Phần</th><th>NỘI DUNG</th><th>Bước</th><th>Giáo viên (T)</th><th>Học sinh (S)</th><th>Tài liệu / Công cụ</th><th>Thời gian (phút)</th><th>Ghi chú</th>
+          <th>Phần</th><th>Nội dung</th><th>Bước</th>
+          <th>Giáo viên (T)</th><th>Học sinh (S)</th>
+          <th>Công cụ</th><th>Thời gian (phút)</th><th>Ghi chú</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Giới thiệu khái niệm mới</td>
-          <td>1.1</td>
-          <td>Kể chuyện dẫn nhập theo chủ đề bài; demo nhanh ví dụ lệnh.</td>
-          <td>Phản ứng, đoán, nêu ví dụ.</td>
-          <td>Slide, tài khoản Trinket.io</td>
-          <td>2–3</td>
-          <td>Tạo cảm xúc “wow”.</td>
+          <td>1</td><td>Khởi động & câu chuyện</td><td>1.1</td>
+          <td>Kể chuyện: “Một ngày robot gặp bạn, nếu bạn cười nó cũng cười, nếu bạn buồn nó sẽ tặng ôm.”</td>
+          <td>Đóng vai robot, giả vờ “đọc cảm xúc”.</td>
+          <td>Slide minh họa cảm xúc</td><td>3</td><td>Tạo cảm xúc nhập vai.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>1.2</td>
-          <td>Giải thích: output/hiển thị và ý nghĩa lệnh trọng tâm.</td>
-          <td>Đặt câu hỏi “nếu… thì sao?”</td>
-          <td>Slide minh hoạ</td>
-          <td>3</td>
-          <td>Dẫn vào thực hành.</td>
+          <td></td><td></td><td>1.2</td>
+          <td>Demo đoạn code if/else – robot phản ứng khác nhau tùy đầu vào.</td>
+          <td>Nhập “vui”, “buồn”, xem phản hồi khác nhau.</td>
+          <td>Trinket.io IDE</td><td>4</td><td>Hiểu khái niệm điều kiện.</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Kỹ năng code cơ bản</td>
-          <td>2.1</td>
-          <td>Hướng dẫn gõ cú pháp chuẩn; giải thích từng phần.</td>
-          <td>Gõ theo, chạy code, xem kết quả.</td>
-          <td>Máy tính/Tablet</td>
-          <td>5</td>
-          <td>Chú thích: hàm/thuộc tính/cú pháp.</td>
+          <td>2</td><td>Giới thiệu cú pháp</td><td>2.1</td>
+          <td>Giải thích cấu trúc: <code>if (điều kiện) { ... } else { ... }</code>.</td>
+          <td>Gõ và quan sát thứ tự chạy.</td>
+          <td>IDE</td><td>6</td><td>Nhấn mạnh dấu ngoặc nhọn.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>2.2</td>
-          <td>Đọc nhịp vui: “lệnh – mở ngoặc – nội dung – đóng ngoặc – Enter!”.</td>
-          <td>Cả lớp gõ theo nhịp.</td>
-          <td>Metronome/Nhạc nền</td>
-          <td>2</td>
-          <td>“Rap code” vui nhộn.</td>
+          <td>3</td><td>Thực hành “Robot đoán tâm trạng”</td><td>3.1</td>
+          <td>Yêu cầu: tạo chương trình hỏi tâm trạng và phản hồi khác nhau.</td>
+          <td>Tự thêm emoji hoặc lời chúc.</td>
+          <td>IDE</td><td>12</td><td>Cá nhân hóa sản phẩm.</td>
         </tr>
         <tr>
-          <td>3</td>
-          <td>Kỹ năng blend – ghép nhiều lệnh (sequence)</td>
-          <td>3.1</td>
-          <td>Viết 2–3 dòng liên tiếp; hỏi thứ tự thực thi.</td>
-          <td>Dự đoán → chạy thử → so sánh.</td>
-          <td>IDE</td>
-          <td>5</td>
-          <td>Khái niệm sequence.</td>
+          <td>4</td><td>Mini game “Thử thách robot”</td><td>4.1</td>
+          <td>GV cho tình huống: nếu trời mưa → mang ô, nếu nắng → đội nón.</td>
+          <td>Viết code mô phỏng hành động robot.</td>
+          <td>IDE</td><td>10</td><td>Ứng dụng thực tế.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>3.2</td>
-          <td>Cố ý tạo lỗi (thiếu ngoặc kép/dấu chấm phẩy) để dạy debug.</td>
-          <td>Đọc lỗi, tự sửa.</td>
-          <td>IDE</td>
-          <td>3</td>
-          <td>Error message.</td>
+          <td>5</td><td>Tăng tốc</td><td>5.1</td>
+          <td>Thi “Ai tạo được robot thông minh nhất.”</td>
+          <td>Robot phản ứng đa dạng nhất thắng.</td>
+          <td>Timer / IDE</td><td>4</td><td>Kích thích sáng tạo.</td>
         </tr>
         <tr>
-          <td>4</td>
-          <td>Mini game</td>
-          <td>4.1</td>
-          <td>Giao thử thách 1 dòng lệnh “gây cười”/“gây bất ngờ”.</td>
-          <td>Viết sáng tạo; chia sẻ màn hình.</td>
-          <td>IDE</td>
-          <td>7</td>
-          <td>Thi đua nhẹ.</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Tăng tốc (Accelerator)</td>
-          <td>5.1</td>
-          <td>Cho 5 dòng mẫu – HS gõ lại nhanh nhất (không lỗi).</td>
-          <td>Thi nhóm, bấm giờ.</td>
-          <td>Timer / IDE</td>
-          <td>5</td>
-          <td>Đo CPM.</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Giao tiếp & mở rộng vốn code</td>
-          <td>6.1</td>
-          <td>Hỏi mở: “Nếu muốn máy {"nghe/ra quyết định/lặp/đổi màu/..."} thì sao?”</td>
-          <td>Đoán – thử – thảo luận.</td>
-          <td>Slide</td>
-          <td>3</td>
-          <td>Gợi mở cho bài tiếp theo.</td>
+          <td>6</td><td>Mở rộng</td><td>6.1</td>
+          <td>Giới thiệu thêm cú pháp <code>else if</code> để có nhiều điều kiện hơn.</td>
+          <td>Thử thêm điều kiện “bình thường”.</td>
+          <td>IDE</td><td>3</td><td>Dẫn sang bài 9 – Vòng lặp.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="card">
-    <h2>Chú thích thuật ngữ chuyên môn</h2>
-    <table class="table">
+    <h2>📘 CHÚ THÍCH THUẬT NGỮ CHUYÊN MÔN</h2>
+    <table>
       <thead><tr><th>Thuật ngữ</th><th>Nghĩa</th><th>Gợi ý cách nói cho trẻ</th></tr></thead>
       <tbody>
-        <tr><td>IDE</td><td>Môi trường lập trình – nơi ta gõ và chạy code.</td><td>“Lớp học của máy tính”</td></tr>
-        <tr><td>Command / Lệnh</td><td>Một câu ra lệnh cho máy tính làm gì đó.</td><td>“Câu thần chú”</td></tr>
-        <tr><td>Syntax / Cú pháp</td><td>Cách viết đúng để máy hiểu được lệnh.</td><td>“Ngữ pháp của robot”</td></tr>
-        <tr><td>Function / Hàm</td><td>Lệnh đặc biệt có ngoặc tròn, thực hiện nhiệm vụ.</td><td>“Chiêu thức đặc biệt của robot”</td></tr>
-        <tr><td>String / Chuỗi</td><td>Đoạn chữ trong dấu ngoặc kép "...".</td><td>“Những gì robot sẽ nói ra”</td></tr>
-        <tr><td>Output</td><td>Kết quả hiển thị sau khi chạy code.</td><td>“Lời robot nói”</td></tr>
-        <tr><td>Error message</td><td>Tin nhắn của máy khi bạn viết sai.</td><td>“Robot nhăn mặt vì mình nói sai”</td></tr>
-        <tr><td>Sequence</td><td>Thứ tự thực hiện từng dòng code.</td><td>“Robot làm theo từng bước một”</td></tr>
-        <tr><td>CPM</td><td>Số ký tự gõ được mỗi phút.</td><td>“Tốc độ gõ tay nhanh của lập trình viên nhí”</td></tr>
+        <tr><td>if</td><td>Từ khóa kiểm tra điều kiện.</td><td>“Nếu đúng thì làm…”</td></tr>
+        <tr><td>else</td><td>Từ khóa thực hiện khi điều kiện sai.</td><td>“Nếu không thì làm khác.”</td></tr>
+        <tr><td>condition</td><td>Điều kiện kiểm tra (so sánh, giá trị).</td><td>“Câu hỏi của robot.”</td></tr>
+        <tr><td>comparison</td><td>Phép so sánh như ==, &gt;, &lt;.</td><td>“Robot kiểm tra xem đúng không.”</td></tr>
+        <tr><td>boolean</td><td>Giá trị đúng/sai (true/false).</td><td>“Có hoặc không.”</td></tr>
+        <tr><td>prompt()</td><td>Hàm để nhập dữ liệu.</td><td>“Robot hỏi bạn điều gì đó.”</td></tr>
+        <tr><td>alert()</td><td>Hàm hiển thị thông báo.</td><td>“Robot trả lời bạn.”</td></tr>
+        <tr><td>else if</td><td>Điều kiện trung gian (nhiều khả năng).</td><td>“Nếu không phải vậy, thì thử điều khác.”</td></tr>
+        <tr><td>logic</td><td>Tư duy điều kiện và kết quả.</td><td>“Suy nghĩ như robot.”</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="footer">© Hyper One – Lesson Skeleton. Bạn điền nội dung chi tiết theo lớp thực tế.</div>
+  <div class="card">
+    <h2>🎓 KẾT QUẢ MONG ĐỢI SAU BUỔI HỌC</h2>
+    <ul>
+      <li>HS hiểu khái niệm “điều kiện” và cách web ra quyết định.</li>
+      <li>Biết viết cấu trúc if/else cơ bản và sử dụng prompt + alert.</li>
+      <li>Tự tạo “robot đoán tâm trạng”.</li>
+      <li>Chuẩn bị sang bài 9: <strong>Vòng lặp – Khi robot biết lặp lại hành động.</strong></li>
+    </ul>
+  </div>
+
+  <div class="footer">© <strong>Hyper One – Lesson 10/2025</strong> · Bản quyền thuộc Hyper One</div>
+</div>
 </body>
 </html>
