@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GIÁO ÁN – Bài 15: Kiểm thử & sửa lỗi (Debug)</title>
+<style>
+*{box-sizing:border-box}body{font-family:Nunito,Arial,sans-serif;margin:0;padding:24px;background:#f9fbff;color:#222}
+h1,h2{margin:0 0 12px}h1{font-size:24px}h2{font-size:18px;color:#3651d3}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#e8f0ff;color:#3651d3;font-size:12px;margin-right:8px}
+.header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e8eef6;border-radius:12px;padding:16px;margin:12px 0}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table th,.table td{border:1px solid #e6e9f2;padding:8px;vertical-align:top}
+.table th{background:#f3f6ff;text-align:left}
+.note{font-size:12px;color:#666}
+.footer{margin-top:24px;font-size:12px;color:#556}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+</style>
+</head>
+<body>
+  <div class="header">
+    <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
+    <span class="badge">Tháng: 10/2025</span>
+    <span class="badge">Bài 15</span>
+  </div>
+  <h1>Bài 15: Kiểm thử & sửa lỗi (Debug)</h1>
+
+  <div class="card">
+    <h2>Trinket.io IDE <span class="note">(IDE – môi trường lập trình tích hợp)</span></h2>
+  </div>
+
+  <div class="card">
+    <h2>MỤC TIÊU – NĂNG LỰC</h2>
+    <table class="table">
+      <thead><tr><th>#</th><th>Năng lực</th><th>Mục tiêu chi tiết</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu rằng máy tính có thể thực hiện qua lệnh trọng tâm của bài (ví dụ: <code class="mono">console.log("debug");</code>).</td></tr>
+        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết cú pháp (syntax) đúng và chạy được trong Trinket.io.</td></tr>
+        <tr><td>3</td><td>Tốc độ (CPM)</td><td>HS gõ đúng 1 dòng lệnh mẫu trong 15 giây (CPM – Characters per Minute).</td></tr>
+        <tr><td>4</td><td>Nền tảng (logic)</td><td>HS biết thay đổi tham số/nội dung để tạo kết quả khác.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Nguyên tắc “đánh code”</h2>
+    <p><strong>Cú pháp trước → chạy thử → thấy phản hồi → lặp lại → ứng dụng.</strong></p>
+    <p>Ví dụ: <code class="mono">console.log("debug");</code> → máy phản hồi → HS phản ứng, hiểu nguyên lý.</p>
+  </div>
+
+  <div class="card">
+    <h2>PHẦN NỘI DUNG BÀI HỌC</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Phần</th><th>NỘI DUNG</th><th>Bước</th><th>Giáo viên (T)</th><th>Học sinh (S)</th><th>Tài liệu / Công cụ</th><th>Thời gian (phút)</th><th>Ghi chú</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Giới thiệu khái niệm mới</td>
+          <td>1.1</td>
+          <td>Kể chuyện dẫn nhập theo chủ đề bài; demo nhanh ví dụ lệnh.</td>
+          <td>Phản ứng, đoán, nêu ví dụ.</td>
+          <td>Slide, tài khoản Trinket.io</td>
+          <td>2–3</td>
+          <td>Tạo cảm xúc “wow”.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>1.2</td>
+          <td>Giải thích: output/hiển thị và ý nghĩa lệnh trọng tâm.</td>
+          <td>Đặt câu hỏi “nếu… thì sao?”</td>
+          <td>Slide minh hoạ</td>
+          <td>3</td>
+          <td>Dẫn vào thực hành.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Kỹ năng code cơ bản</td>
+          <td>2.1</td>
+          <td>Hướng dẫn gõ cú pháp chuẩn; giải thích từng phần.</td>
+          <td>Gõ theo, chạy code, xem kết quả.</td>
+          <td>Máy tính/Tablet</td>
+          <td>5</td>
+          <td>Chú thích: hàm/thuộc tính/cú pháp.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>2.2</td>
+          <td>Đọc nhịp vui: “lệnh – mở ngoặc – nội dung – đóng ngoặc – Enter!”.</td>
+          <td>Cả lớp gõ theo nhịp.</td>
+          <td>Metronome/Nhạc nền</td>
+          <td>2</td>
+          <td>“Rap code” vui nhộn.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Kỹ năng blend – ghép nhiều lệnh (sequence)</td>
+          <td>3.1</td>
+          <td>Viết 2–3 dòng liên tiếp; hỏi thứ tự thực thi.</td>
+          <td>Dự đoán → chạy thử → so sánh.</td>
+          <td>IDE</td>
+          <td>5</td>
+          <td>Khái niệm sequence.</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>3.2</td>
+          <td>Cố ý tạo lỗi (thiếu ngoặc kép/dấu chấm phẩy) để dạy debug.</td>
+          <td>Đọc lỗi, tự sửa.</td>
+          <td>IDE</td>
+          <td>3</td>
+          <td>Error message.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Mini game</td>
+          <td>4.1</td>
+          <td>Giao thử thách 1 dòng lệnh “gây cười”/“gây bất ngờ”.</td>
+          <td>Viết sáng tạo; chia sẻ màn hình.</td>
+          <td>IDE</td>
+          <td>7</td>
+          <td>Thi đua nhẹ.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Tăng tốc (Accelerator)</td>
+          <td>5.1</td>
+          <td>Cho 5 dòng mẫu – HS gõ lại nhanh nhất (không lỗi).</td>
+          <td>Thi nhóm, bấm giờ.</td>
+          <td>Timer / IDE</td>
+          <td>5</td>
+          <td>Đo CPM.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Giao tiếp & mở rộng vốn code</td>
+          <td>6.1</td>
+          <td>Hỏi mở: “Nếu muốn máy {"nghe/ra quyết định/lặp/đổi màu/..."} thì sao?”</td>
+          <td>Đoán – thử – thảo luận.</td>
+          <td>Slide</td>
+          <td>3</td>
+          <td>Gợi mở cho bài tiếp theo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Chú thích thuật ngữ chuyên môn</h2>
+    <table class="table">
+      <thead><tr><th>Thuật ngữ</th><th>Nghĩa</th><th>Gợi ý cách nói cho trẻ</th></tr></thead>
+      <tbody>
+        <tr><td>IDE</td><td>Môi trường lập trình – nơi ta gõ và chạy code.</td><td>“Lớp học của máy tính”</td></tr>
+        <tr><td>Command / Lệnh</td><td>Một câu ra lệnh cho máy tính làm gì đó.</td><td>“Câu thần chú”</td></tr>
+        <tr><td>Syntax / Cú pháp</td><td>Cách viết đúng để máy hiểu được lệnh.</td><td>“Ngữ pháp của robot”</td></tr>
+        <tr><td>Function / Hàm</td><td>Lệnh đặc biệt có ngoặc tròn, thực hiện nhiệm vụ.</td><td>“Chiêu thức đặc biệt của robot”</td></tr>
+        <tr><td>String / Chuỗi</td><td>Đoạn chữ trong dấu ngoặc kép "...".</td><td>“Những gì robot sẽ nói ra”</td></tr>
+        <tr><td>Output</td><td>Kết quả hiển thị sau khi chạy code.</td><td>“Lời robot nói”</td></tr>
+        <tr><td>Error message</td><td>Tin nhắn của máy khi bạn viết sai.</td><td>“Robot nhăn mặt vì mình nói sai”</td></tr>
+        <tr><td>Sequence</td><td>Thứ tự thực hiện từng dòng code.</td><td>“Robot làm theo từng bước một”</td></tr>
+        <tr><td>CPM</td><td>Số ký tự gõ được mỗi phút.</td><td>“Tốc độ gõ tay nhanh của lập trình viên nhí”</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">© Hyper One – Lesson Skeleton. Bạn điền nội dung chi tiết theo lớp thực tế.</div>
+</body>
+</html>
