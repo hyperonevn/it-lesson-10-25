@@ -3,173 +3,201 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GIÁO ÁN – Bài 4: HTML cơ bản – Tạo ngôi nhà cho web</title>
+<title>Bài 4 – HTML cơ bản – Tạo ngôi nhà cho web | Hyper One Lesson</title>
 <style>
-*{box-sizing:border-box}body{font-family:Nunito,Arial,sans-serif;margin:0;padding:24px;background:#f9fbff;color:#222}
-h1,h2{margin:0 0 12px}h1{font-size:24px}h2{font-size:18px;color:#3651d3}
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#e8f0ff;color:#3651d3;font-size:12px;margin-right:8px}
-.header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
-.card{background:#fff;border:1px solid #e8eef6;border-radius:12px;padding:16px;margin:12px 0}
-.table{width:100%;border-collapse:collapse;font-size:14px}
-.table th,.table td{border:1px solid #e6e9f2;padding:8px;vertical-align:top}
-.table th{background:#f3f6ff;text-align:left}
-.note{font-size:12px;color:#666}
-.footer{margin-top:24px;font-size:12px;color:#556}
-code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+:root{
+  --blue:#2563eb;
+  --bg:#f9fbff;
+  --text:#1f2937;
+  --border:#e5e7eb;
+  --accent:#3b82f6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  padding-bottom:60px;
+}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+h1,h2,h3{margin-bottom:12px;font-weight:600;color:#111827}
+h1{font-size:30px;margin-top:8px}
+h2{font-size:22px;margin-top:22px;color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{border:1px solid var(--border);padding:8px;vertical-align:top}
+th{background:#eef2ff;text-align:left}
+pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:24px;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.badge{
+  background:#fff;
+  border:1px solid #dbeafe;
+  color:var(--accent);
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:12px;
+}
+.footer{
+  margin-top:40px;
+  text-align:center;
+  font-size:13px;
+  color:#6b7280;
+  border-top:1px solid var(--border);
+  padding-top:20px;
+}
+.codebox{
+  background:#111827;
+  color:#e0e7ff;
+  padding:14px;
+  border-radius:10px;
+  font-family:ui-monospace,Consolas,monospace;
+  overflow-x:auto;
+}
 </style>
 </head>
 <body>
-  <div class="header">
+<div class="container">
+  <div class="badges">
     <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
-    <span class="badge">Tháng: 10/2025</span>
-    <span class="badge">Bài 04</span>
+    <span class="badge">Bài 4</span>
+    <span class="badge">10/2025</span>
   </div>
-  <h1>Bài 4: HTML cơ bản – Tạo ngôi nhà cho web</h1>
+  <h1>🏠 HTML cơ bản – Tạo ngôi nhà cho web</h1>
+  <p><strong>Trinket.io IDE</strong> – môi trường trực tuyến giúp học sinh viết và xem ngay kết quả hiển thị trên trình duyệt.</p>
 
   <div class="card">
-    <h2>Trinket.io IDE <span class="note">(IDE – môi trường lập trình tích hợp)</span></h2>
-  </div>
-
-  <div class="card">
-    <h2>MỤC TIÊU – NĂNG LỰC</h2>
-    <table class="table">
+    <h2>🎯 MỤC TIÊU – NĂNG LỰC</h2>
+    <table>
       <thead><tr><th>#</th><th>Năng lực</th><th>Mục tiêu chi tiết</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu rằng máy tính có thể thực hiện qua lệnh trọng tâm của bài (ví dụ: <code class="mono"><h1>Xin chào</h1></code>).</td></tr>
-        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết cú pháp (syntax) đúng và chạy được trong Trinket.io.</td></tr>
-        <tr><td>3</td><td>Tốc độ (CPM)</td><td>HS gõ đúng 1 dòng lệnh mẫu trong 15 giây (CPM – Characters per Minute).</td></tr>
-        <tr><td>4</td><td>Nền tảng (logic)</td><td>HS biết thay đổi tham số/nội dung để tạo kết quả khác.</td></tr>
+        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu rằng HTML là ngôn ngữ xây dựng “khung nhà” cho trang web – mỗi phần tử là một viên gạch.</td></tr>
+        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết cú pháp mở–đóng thẻ <code>&lt;tag&gt;...&lt;/tag&gt;</code> và biết dùng các thẻ cơ bản như <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>.</td></tr>
+        <tr><td>3</td><td>Tốc độ (CPM)</td><td>HS gõ được cấu trúc HTML cơ bản trong 3 phút.</td></tr>
+        <tr><td>4</td><td>Nền tảng (logic)</td><td>HS hiểu mối quan hệ cha–con (thẻ chứa trong thẻ) và cách trình duyệt đọc từ trên xuống dưới.</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="card">
-    <h2>Nguyên tắc “đánh code”</h2>
-    <p><strong>Cú pháp trước → chạy thử → thấy phản hồi → lặp lại → ứng dụng.</strong></p>
-    <p>Ví dụ: <code class="mono"><h1>Xin chào</h1></code> → máy phản hồi → HS phản ứng, hiểu nguyên lý.</p>
+    <h2>💡 Nguyên tắc “Xây nhà cho web”</h2>
+    <p><strong>Khung trước – Nội dung sau – Trang trí cuối cùng.</strong></p>
+    <p>Ví dụ:</p>
+    <div class="codebox">
+      &lt;!DOCTYPE html&gt;<br>
+      &lt;html&gt;<br>
+      &nbsp;&lt;head&gt;<br>
+      &nbsp;&nbsp;&lt;title&gt;Ngôi nhà đầu tiên của con&lt;/title&gt;<br>
+      &nbsp;&lt;/head&gt;<br>
+      &nbsp;&lt;body&gt;<br>
+      &nbsp;&nbsp;&lt;h1&gt;Xin chào, đây là trang web của con!&lt;/h1&gt;<br>
+      &nbsp;&nbsp;&lt;p&gt;Con thích mèo máy Doraemon 🐱&lt;/p&gt;<br>
+      &nbsp;&nbsp;&lt;img src="https://i.imgur.com/doraemon.png" width="200"&gt;<br>
+      &nbsp;&lt;/body&gt;<br>
+      &lt;/html&gt;
+    </div>
+    <p>Khi chạy, trình duyệt sẽ “xây nhà” với tiêu đề, đoạn văn và hình ảnh bên trong – như một ngôi nhà có khung, phòng khách và bức tranh treo tường.</p>
   </div>
 
   <div class="card">
-    <h2>PHẦN NỘI DUNG BÀI HỌC</h2>
-    <table class="table">
+    <h2>📚 PHẦN NỘI DUNG BÀI HỌC</h2>
+    <table>
       <thead>
         <tr>
-          <th>Phần</th><th>NỘI DUNG</th><th>Bước</th><th>Giáo viên (T)</th><th>Học sinh (S)</th><th>Tài liệu / Công cụ</th><th>Thời gian (phút)</th><th>Ghi chú</th>
+          <th>Phần</th><th>Nội dung</th><th>Bước</th>
+          <th>Giáo viên (T)</th><th>Học sinh (S)</th>
+          <th>Công cụ</th><th>Thời gian (phút)</th><th>Ghi chú</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Giới thiệu khái niệm mới</td>
-          <td>1.1</td>
-          <td>Kể chuyện dẫn nhập theo chủ đề bài; demo nhanh ví dụ lệnh.</td>
-          <td>Phản ứng, đoán, nêu ví dụ.</td>
-          <td>Slide, tài khoản Trinket.io</td>
-          <td>2–3</td>
-          <td>Tạo cảm xúc “wow”.</td>
+          <td>1</td><td>Khởi động & câu chuyện</td><td>1.1</td>
+          <td>Kể chuyện: “Nếu trang web là ngôi nhà, HTML chính là khung sườn của nó.”</td>
+          <td>Học sinh tưởng tượng căn nhà của mình có cửa, tường, mái, phòng…</td>
+          <td>Slide minh họa ngôi nhà + web</td><td>3</td><td>Liên tưởng trực quan.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>1.2</td>
-          <td>Giải thích: output/hiển thị và ý nghĩa lệnh trọng tâm.</td>
-          <td>Đặt câu hỏi “nếu… thì sao?”</td>
-          <td>Slide minh hoạ</td>
-          <td>3</td>
-          <td>Dẫn vào thực hành.</td>
+          <td></td><td></td><td>1.2</td>
+          <td>Demo: Viết khung HTML cơ bản, chạy thử.</td>
+          <td>Quan sát và hỏi “Phần nào là mái nhà (head), phần nào là phòng (body)?”</td>
+          <td>Trinket.io IDE</td><td>4</td><td>Dẫn vào phần cấu trúc.</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Kỹ năng code cơ bản</td>
-          <td>2.1</td>
-          <td>Hướng dẫn gõ cú pháp chuẩn; giải thích từng phần.</td>
-          <td>Gõ theo, chạy code, xem kết quả.</td>
-          <td>Máy tính/Tablet</td>
-          <td>5</td>
-          <td>Chú thích: hàm/thuộc tính/cú pháp.</td>
+          <td>2</td><td>Giới thiệu thẻ HTML</td><td>2.1</td>
+          <td>Giải thích: mỗi thẻ có phần mở <code>&lt;tag&gt;</code> và đóng <code>&lt;/tag&gt;</code>.</td>
+          <td>Gõ thử <code>&lt;h1&gt;Xin chào&lt;/h1&gt;</code>, thấy chữ lớn xuất hiện.</td>
+          <td>IDE</td><td>5</td><td>Giới thiệu “tag – element”.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>2.2</td>
-          <td>Đọc nhịp vui: “lệnh – mở ngoặc – nội dung – đóng ngoặc – Enter!”.</td>
-          <td>Cả lớp gõ theo nhịp.</td>
-          <td>Metronome/Nhạc nền</td>
-          <td>2</td>
-          <td>“Rap code” vui nhộn.</td>
+          <td></td><td></td><td>2.2</td>
+          <td>Thêm đoạn văn và ảnh bằng <code>&lt;p&gt;</code> và <code>&lt;img&gt;</code>.</td>
+          <td>Thay đổi nội dung để làm “trang web của con”.</td>
+          <td>IDE</td><td>6</td><td>Khuyến khích cá nhân hóa.</td>
         </tr>
         <tr>
-          <td>3</td>
-          <td>Kỹ năng blend – ghép nhiều lệnh (sequence)</td>
-          <td>3.1</td>
-          <td>Viết 2–3 dòng liên tiếp; hỏi thứ tự thực thi.</td>
-          <td>Dự đoán → chạy thử → so sánh.</td>
-          <td>IDE</td>
-          <td>5</td>
-          <td>Khái niệm sequence.</td>
+          <td>3</td><td>Tổ chức cấu trúc trang</td><td>3.1</td>
+          <td>Giải thích vai trò của <code>&lt;head&gt;</code> và <code>&lt;body&gt;</code>.</td>
+          <td>Gõ thử, thêm <code>&lt;title&gt;</code> trong <code>&lt;head&gt;</code>.</td>
+          <td>IDE</td><td>6</td><td>Giúp hiểu tầng lớp trong HTML.</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td>3.2</td>
-          <td>Cố ý tạo lỗi (thiếu ngoặc kép/dấu chấm phẩy) để dạy debug.</td>
-          <td>Đọc lỗi, tự sửa.</td>
-          <td>IDE</td>
-          <td>3</td>
-          <td>Error message.</td>
+          <td>4</td><td>Mini project “Ngôi nhà web của em”</td><td>4.1</td>
+          <td>Yêu cầu: tạo 1 trang HTML có tiêu đề, 1 đoạn mô tả, 1 hình ảnh yêu thích.</td>
+          <td>Tự viết nội dung, trang trí bằng emoji hoặc ảnh mạng.</td>
+          <td>IDE</td><td>10</td><td>Trình diễn cuối giờ.</td>
         </tr>
         <tr>
-          <td>4</td>
-          <td>Mini game</td>
-          <td>4.1</td>
-          <td>Giao thử thách 1 dòng lệnh “gây cười”/“gây bất ngờ”.</td>
-          <td>Viết sáng tạo; chia sẻ màn hình.</td>
-          <td>IDE</td>
-          <td>7</td>
-          <td>Thi đua nhẹ.</td>
+          <td>5</td><td>Tăng tốc</td><td>5.1</td>
+          <td>Thi nhóm: ai gõ được cấu trúc HTML chuẩn nhanh nhất.</td>
+          <td>Bấm giờ, đếm dòng chính xác.</td>
+          <td>Timer / IDE</td><td>3</td><td>Kiểm tra kỹ năng.</td>
         </tr>
         <tr>
-          <td>5</td>
-          <td>Tăng tốc (Accelerator)</td>
-          <td>5.1</td>
-          <td>Cho 5 dòng mẫu – HS gõ lại nhanh nhất (không lỗi).</td>
-          <td>Thi nhóm, bấm giờ.</td>
-          <td>Timer / IDE</td>
-          <td>5</td>
-          <td>Đo CPM.</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Giao tiếp & mở rộng vốn code</td>
-          <td>6.1</td>
-          <td>Hỏi mở: “Nếu muốn máy {"nghe/ra quyết định/lặp/đổi màu/..."} thì sao?”</td>
-          <td>Đoán – thử – thảo luận.</td>
-          <td>Slide</td>
-          <td>3</td>
-          <td>Gợi mở cho bài tiếp theo.</td>
+          <td>6</td><td>Mở rộng</td><td>6.1</td>
+          <td>Giới thiệu: “Tuần sau, chúng ta sẽ học cách trang trí nhà – đó là CSS!”</td>
+          <td>Hào hứng chờ đón bài mới.</td>
+          <td>Slide</td><td>3</td><td>Tạo hứng thú cho buổi sau.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="card">
-    <h2>Chú thích thuật ngữ chuyên môn</h2>
-    <table class="table">
+    <h2>📘 CHÚ THÍCH THUẬT NGỮ CHUYÊN MÔN</h2>
+    <table>
       <thead><tr><th>Thuật ngữ</th><th>Nghĩa</th><th>Gợi ý cách nói cho trẻ</th></tr></thead>
       <tbody>
-        <tr><td>IDE</td><td>Môi trường lập trình – nơi ta gõ và chạy code.</td><td>“Lớp học của máy tính”</td></tr>
-        <tr><td>Command / Lệnh</td><td>Một câu ra lệnh cho máy tính làm gì đó.</td><td>“Câu thần chú”</td></tr>
-        <tr><td>Syntax / Cú pháp</td><td>Cách viết đúng để máy hiểu được lệnh.</td><td>“Ngữ pháp của robot”</td></tr>
-        <tr><td>Function / Hàm</td><td>Lệnh đặc biệt có ngoặc tròn, thực hiện nhiệm vụ.</td><td>“Chiêu thức đặc biệt của robot”</td></tr>
-        <tr><td>String / Chuỗi</td><td>Đoạn chữ trong dấu ngoặc kép "...".</td><td>“Những gì robot sẽ nói ra”</td></tr>
-        <tr><td>Output</td><td>Kết quả hiển thị sau khi chạy code.</td><td>“Lời robot nói”</td></tr>
-        <tr><td>Error message</td><td>Tin nhắn của máy khi bạn viết sai.</td><td>“Robot nhăn mặt vì mình nói sai”</td></tr>
-        <tr><td>Sequence</td><td>Thứ tự thực hiện từng dòng code.</td><td>“Robot làm theo từng bước một”</td></tr>
-        <tr><td>CPM</td><td>Số ký tự gõ được mỗi phút.</td><td>“Tốc độ gõ tay nhanh của lập trình viên nhí”</td></tr>
+        <tr><td>HTML</td><td>Ngôn ngữ đánh dấu để xây dựng trang web.</td><td>“Bản thiết kế ngôi nhà web.”</td></tr>
+        <tr><td>Tag / Thẻ</td><td>Ký hiệu mở và đóng để bao quanh nội dung.</td><td>“Viên gạch của ngôi nhà.”</td></tr>
+        <tr><td>Element</td><td>Toàn bộ thẻ mở, nội dung và thẻ đóng.</td><td>“Một căn phòng hoàn chỉnh.”</td></tr>
+        <tr><td>Head</td><td>Phần đầu của trang – nơi chứa tiêu đề và thông tin ẩn.</td><td>“Mái nhà.”</td></tr>
+        <tr><td>Body</td><td>Phần thân – nơi hiển thị nội dung chính.</td><td>“Phòng khách.”</td></tr>
+        <tr><td>Attribute / Thuộc tính</td><td>Thông tin bổ sung cho thẻ (như <code>src</code>, <code>width</code>).</td><td>“Phụ kiện trang trí.”</td></tr>
+        <tr><td>Image tag</td><td>Thẻ hiển thị hình ảnh (<code>&lt;img&gt;</code>).</td><td>“Khung tranh treo tường.”</td></tr>
+        <tr><td>Paragraph</td><td>Thẻ tạo đoạn văn (<code>&lt;p&gt;</code>).</td><td>“Dòng chữ trên tường.”</td></tr>
+        <tr><td>Title</td><td>Tiêu đề hiển thị ở tab trình duyệt.</td><td>“Tên ngôi nhà.”</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="footer">© Hyper One – Lesson Skeleton. Bạn điền nội dung chi tiết theo lớp thực tế.</div>
+  <div class="card">
+    <h2>🎓 KẾT QUẢ MONG ĐỢI SAU BUỔI HỌC</h2>
+    <ul>
+      <li>HS hiểu HTML là “bộ khung” của trang web.</li>
+      <li>Tự tay tạo trang web đầu tiên bằng thẻ <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>.</li>
+      <li>Biết phân biệt phần <code>&lt;head&gt;</code> và <code>&lt;body&gt;</code>.</li>
+      <li>Sẵn sàng cho bài kế tiếp: <strong>CSS – Làm đẹp cho web.</strong></li>
+    </ul>
+  </div>
+
+  <div class="footer">© <strong>Hyper One – Lesson 10/2025</strong> · Bản quyền thuộc Hyper One</div>
+</div>
 </body>
 </html>
