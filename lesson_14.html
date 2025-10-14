@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bài 15 – Kiểm thử & Sửa lỗi (Debug) | Hyper One Lesson</title>
+<title>Bài 14 – Xây dựng website cá nhân | Hyper One Lesson</title>
 <style>
 :root{
   --blue:#2563eb;
@@ -67,35 +67,41 @@ pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
 <div class="container">
   <div class="badges">
     <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
-    <span class="badge">Bài 15</span>
+    <span class="badge">Bài 14</span>
     <span class="badge">10/2025</span>
   </div>
-  <h1>🧩 Kiểm thử & Sửa lỗi (Debug) – Khi lập trình viên làm thám tử</h1>
-  <p><strong>Trinket.io IDE</strong> – nơi học sinh học cách phát hiện, phân tích và sửa lỗi trong website của mình, rèn tư duy kiên nhẫn và chính xác.</p>
+  <h1>🌈 Xây dựng website cá nhân – Biến ý tưởng thành hiện thực</h1>
+  <p><strong>Trinket.io IDE</strong> – nơi học sinh bắt đầu dựng website thật của chính mình, dựa trên bản phác thảo đã làm ở bài 13.</p>
 
   <div class="card">
     <h2>🎯 MỤC TIÊU – NĂNG LỰC</h2>
     <table>
       <thead><tr><th>#</th><th>Năng lực</th><th>Mục tiêu chi tiết</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu lỗi là điều bình thường trong lập trình – “lỗi không đáng sợ, chỉ là manh mối để học.”</td></tr>
-        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết đọc lỗi console, kiểm tra cú pháp, và tìm vị trí sai trong HTML/CSS/JS.</td></tr>
-        <tr><td>3</td><td>Phản biện & Logic</td><td>HS biết đặt câu hỏi: “Tại sao?” – để tìm nguyên nhân thay vì chỉ sửa bừa.</td></tr>
-        <tr><td>4</td><td>Tinh thần học tập</td><td>HS học được kiên nhẫn, tự tin và chủ động thử sai – đúng tinh thần lập trình viên.</td></tr>
+        <tr><td>1</td><td>Nhận thức</td><td>HS hiểu quy trình “từ ý tưởng → thiết kế → sản phẩm”.</td></tr>
+        <tr><td>2</td><td>Kỹ thuật</td><td>HS biết dựng website có cấu trúc hoàn chỉnh (HTML + CSS + JS đơn giản).</td></tr>
+        <tr><td>3</td><td>Sáng tạo</td><td>HS tự chọn màu, ảnh, bố cục, và cách thể hiện bản thân.</td></tr>
+        <tr><td>4</td><td>Tự tin & thuyết trình</td><td>HS biết giới thiệu trang web của mình cho bạn bè.</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="card">
-    <h2>💡 Câu chuyện mở đầu “Lỗi cũng là bạn”</h2>
-    <p>Giáo viên kể: “Ngày xưa, có một robot tên là Bug. Mỗi khi ai đó gõ sai code, Bug xuất hiện để giúp họ sửa lại.”  
-    → Học sinh hiểu rằng: **lỗi không xấu, mà là tín hiệu để mình giỏi hơn.**</p>
-    <p>Ví dụ lỗi thường gặp:</p>
+    <h2>💡 Câu chuyện mở đầu “Con là tác giả trang web của chính mình”</h2>
+    <p>Giáo viên kể: “Nếu một ngày có người gõ tên con trên Google, họ thấy gì?  
+    Hôm nay, con sẽ tạo ra <strong>trang web mang tên chính con</strong>.”</p>
+    <p>Ví dụ:</p>
     <div class="codebox">
-      print("Xin chào!) <br>
-      ↑ Lỗi: thiếu dấu ngoặc kép → “SyntaxError”
+      &lt;h1&gt;Xin chào, mình là Andy!&lt;/h1&gt;<br>
+      &lt;p&gt;Mình 9 tuổi, thích robot, mèo máy Doraemon và làm web vui nhộn.&lt;/p&gt;<br>
+      &lt;img src="andy.jpg" width="200"&gt;<br>
+      &lt;button onclick="sayHello()"&gt;Nhấn để Andy chào bạn!&lt;/button&gt;<br>
+      &lt;script&gt;<br>
+      &nbsp;&nbsp;function sayHello() {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alert("Xin chào! Cảm ơn bạn đã ghé thăm trang web của mình 😄");<br>
+      &nbsp;&nbsp;}<br>
+      &lt;/script&gt;
     </div>
-    <p>→ Khi thấy lỗi, đừng sợ! Hãy đọc kỹ thông báo để lần theo “manh mối”.</p>
   </div>
 
   <div class="card">
@@ -110,40 +116,40 @@ pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
       </thead>
       <tbody>
         <tr>
-          <td>1</td><td>Khởi động & câu chuyện</td><td>1.1</td>
-          <td>Kể chuyện về “Robot Bug giúp lập trình viên”.</td>
-          <td>Đóng vai robot Bug – nhăn mặt khi code sai.</td>
-          <td>Slide minh họa vui</td><td>5</td><td>Tạo không khí nhẹ nhàng.</td>
+          <td>1</td><td>Ôn lại bản phác thảo</td><td>1.1</td>
+          <td>Hỏi: “Trang web của con có những phần gì?”</td>
+          <td>Mở bản vẽ bài 13, xác định vùng header, body, footer.</td>
+          <td>Giấy / bảng</td><td>5</td><td>Liên kết bài cũ – bài mới.</td>
         </tr>
         <tr>
-          <td>2</td><td>Nhận diện lỗi thường gặp</td><td>2.1</td>
-          <td>Cho ví dụ lỗi HTML (quên đóng thẻ), CSS (thiếu ngoặc), JS (quên dấu ;).</td>
-          <td>Quan sát lỗi xuất hiện và dự đoán nguyên nhân.</td>
-          <td>Trinket.io IDE</td><td>10</td><td>Hiểu loại lỗi.</td>
+          <td>2</td><td>Bắt đầu dựng HTML</td><td>2.1</td>
+          <td>Hướng dẫn tạo file HTML mới.</td>
+          <td>Gõ tiêu đề, đoạn giới thiệu, ảnh bản thân.</td>
+          <td>Trinket.io IDE</td><td>10</td><td>Trọng tâm: cấu trúc.</td>
         </tr>
         <tr>
-          <td>3</td><td>Thực hành sửa lỗi thật</td><td>3.1</td>
-          <td>Giao 3 đoạn code có lỗi → học sinh phải tìm và sửa.</td>
-          <td>Đọc lỗi, gõ lại, kiểm tra kết quả.</td>
-          <td>IDE</td><td>15</td><td>Tư duy “thám tử lập trình”.</td>
+          <td>3</td><td>Trang trí bằng CSS</td><td>3.1</td>
+          <td>Giới thiệu lại các thuộc tính: màu nền, font, khung ảnh.</td>
+          <td>Tự chọn tông màu yêu thích.</td>
+          <td>IDE</td><td>10</td><td>Phát huy cá tính.</td>
         </tr>
         <tr>
-          <td>4</td><td>Mini project “Săn lỗi website”</td><td>4.1</td>
-          <td>Cho học sinh kiểm tra chéo website của bạn.</td>
-          <td>Tìm lỗi chính tả, màu sai, nút không hoạt động.</td>
-          <td>Trinket.io / Chrome</td><td>10</td><td>Phát triển kỹ năng teamwork.</td>
+          <td>4</td><td>Thêm JavaScript tương tác</td><td>4.1</td>
+          <td>Hướng dẫn thêm nút chào người xem.</td>
+          <td>Thử chỉnh lời chào, thêm emoji.</td>
+          <td>IDE</td><td>10</td><td>Tăng cảm xúc giao tiếp.</td>
         </tr>
         <tr>
-          <td>5</td><td>Tăng tốc</td><td>5.1</td>
-          <td>Thi “Ai sửa lỗi nhanh nhất”.</td>
-          <td>Nhấn chạy – sửa – chạy lại.</td>
-          <td>Timer</td><td>5</td><td>Vui & cạnh tranh lành mạnh.</td>
+          <td>5</td><td>Mini project “Website của con”</td><td>5.1</td>
+          <td>Học sinh hoàn thiện website riêng, ghi tên và năm học.</td>
+          <td>Tự trình bày và lưu link của mình.</td>
+          <td>Trinket.io</td><td>15</td><td>Trình diễn và tự hào về sản phẩm.</td>
         </tr>
         <tr>
           <td>6</td><td>Mở rộng & phản hồi</td><td>6.1</td>
-          <td>Giới thiệu DevTools, console.log() để debug JS.</td>
-          <td>Thử thêm log để xem biến đổi.</td>
-          <td>Trình duyệt Chrome</td><td>5</td><td>Dẫn sang bài 16 – Trình diễn & chia sẻ sản phẩm.</td>
+          <td>Cho các bạn bình chọn trang web ấn tượng nhất.</td>
+          <td>Đưa nhận xét, khen ý tưởng sáng tạo của bạn.</td>
+          <td>Lớp học</td><td>5</td><td>Tăng kỹ năng giao tiếp.</td>
         </tr>
       </tbody>
     </table>
@@ -154,12 +160,11 @@ pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
     <table>
       <thead><tr><th>Thuật ngữ</th><th>Nghĩa</th><th>Gợi ý cách nói cho trẻ</th></tr></thead>
       <tbody>
-        <tr><td>Debug</td><td>Tìm và sửa lỗi trong code.</td><td>“Bắt lỗi như thám tử.”</td></tr>
-        <tr><td>Bug</td><td>Lỗi xuất hiện trong chương trình.</td><td>“Con sâu máy tính.”</td></tr>
-        <tr><td>Error message</td><td>Thông báo lỗi hiển thị khi code sai.</td><td>“Tiếng kêu cứu của robot.”</td></tr>
-        <tr><td>Console</td><td>Bảng ghi lại lỗi và thông tin khi chạy web.</td><td>“Nhật ký của web.”</td></tr>
-        <tr><td>Syntax</td><td>Cú pháp – cách viết đúng để máy hiểu.</td><td>“Ngữ pháp robot.”</td></tr>
-        <tr><td>Debugging mindset</td><td>Tư duy phân tích – thử sai – kiểm tra lại.</td><td>“Tư duy điều tra.”</td></tr>
+        <tr><td>Portfolio</td><td>Trang web cá nhân giới thiệu bản thân.</td><td>“Tấm danh thiếp online.”</td></tr>
+        <tr><td>Hero section</td><td>Phần đầu ấn tượng với ảnh và tiêu đề.</td><td>“Tấm poster đầu trang.”</td></tr>
+        <tr><td>Call to Action (CTA)</td><td>Nút hành động, ví dụ “Liên hệ” hoặc “Xem thêm”.</td><td>“Nút bấm thần kỳ.”</td></tr>
+        <tr><td>Responsive</td><td>Website hiển thị đẹp trên mọi thiết bị.</td><td>“Co giãn theo màn hình.”</td></tr>
+        <tr><td>Deployment</td><td>Đưa web lên mạng thật (GitHub Pages).</td><td>“Cho web bay lên Internet.”</td></tr>
       </tbody>
     </table>
   </div>
@@ -167,10 +172,11 @@ pre,code{background:#f3f4f6;padding:4px 6px;border-radius:6px}
   <div class="card">
     <h2>🎓 KẾT QUẢ MONG ĐỢI SAU BUỔI HỌC</h2>
     <ul>
-      <li>HS hiểu rằng “lỗi không xấu” – mà là cơ hội để học.</li>
-      <li>Biết cách đọc lỗi, kiểm tra từng phần và sửa dần.</li>
-      <li>Tự tin giúp bạn khác phát hiện lỗi và hỗ trợ nhau.</li>
-      <li>Chuẩn bị sẵn sàng cho <strong>Bài 16 – Ngày trình diễn sản phẩm 🎓</strong>.</li>
+      <li>HS tự tay dựng website cá nhân theo bản phác thảo.</li>
+      <li>Biết cách kết hợp HTML – CSS – JS để tạo hiệu ứng nhỏ.</li>
+      <li>Hiểu khái niệm <strong>portfolio cá nhân</strong>.</li>
+      <li>Tự tin trình bày sản phẩm của mình trước lớp.</li>
+      <li>Sẵn sàng cho bài 15: <strong>Kiểm thử & sửa lỗi – Hoàn thiện web cá nhân.</strong></li>
     </ul>
   </div>
 
