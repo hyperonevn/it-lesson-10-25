@@ -3,70 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Giáo án 16 buổi – Tư duy lập trình & sáng tạo web (Trinket.io)</title>
+<title>HYPER ONE · Tư duy lập trình & sáng tạo web cho trẻ em (16 buổi)</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;padding:0}
-body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f8fbff;color:#1f2937}
-a{color:inherit;text-decoration:none}
-.header{padding:28px 20px;background:linear-gradient(135deg,#eaf2ff,#fef6ff);border-bottom:1px solid #e5e7eb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,#f9fbff 0%,#ffffff 100%);
+  color:#1f2937;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit;transition:.2s}
 .container{max-width:1080px;margin:0 auto;padding:0 20px}
-.brand{display:flex;align-items:center;gap:12px}
-.badge{background:#eef2ff;color:#3b82f6;border:1px solid #dbeafe;border-radius:999px;padding:4px 10px;font-size:12px}
-.title{margin:8px 0 0;font-size:28px;line-height:1.2}
-.subtitle{margin:6px 0 0;color:#4b5563}
-.section{padding:22px 0}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.lesson{display:flex;flex-direction:column;gap:6px;border:1px solid #e5e7eb;border-radius:12px;padding:12px;background:#ffffff}
-.lesson:hover{box-shadow:0 8px 20px rgba(0,0,0,.06);transform:translateY(-2px);transition:.2s}
-.lesson .tag{font-size:12px;background:#ecfeff;border:1px solid #cffafe;color:#0891b2;border-radius:999px;padding:2px 8px;display:inline-block}
-.lesson .name{font-weight:600}
-.footer{padding:20px 0;color:#6b7280;font-size:13px}
-.btn{display:inline-block;background:#3b82f6;color:#fff;border-radius:10px;padding:10px 14px;border:1px solid #1d4ed8}
-.btn:hover{background:#2563eb}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.header{
+  padding:40px 20px 60px;
+  background:linear-gradient(120deg,#cce3ff 0%,#f3e8ff 100%);
+  border-bottom:1px solid #e5e7eb;
+  text-align:center;
+}
+.badges{margin-bottom:18px}
+.badge{
+  display:inline-block;
+  background:#fff;
+  color:#3b82f6;
+  border:1px solid #dbeafe;
+  border-radius:999px;
+  padding:5px 12px;
+  font-size:12px;
+  margin:0 5px;
+}
+h1.title{font-size:30px;margin-bottom:10px;color:#111827}
+.subtitle{color:#374151;font-size:16px;max-width:680px;margin:0 auto}
+.hero-actions{margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+  background:#2563eb;
+  color:#fff;
+  border-radius:10px;
+  padding:10px 18px;
+  border:none;
+  font-weight:500;
+}
+.btn:hover{background:#1d4ed8}
+.section{padding:50px 0}
+h2{font-size:22px;margin-bottom:14px;color:#111827}
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 4px 15px rgba(0,0,0,.04);
+}
 .overview-list{list-style:disc;margin:10px 0 0 20px;color:#374151}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:18px}
+.lesson{
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  transition:all .25s ease;
+}
+.lesson:hover{
+  box-shadow:0 10px 25px rgba(0,0,0,.07);
+  transform:translateY(-3px);
+}
+.lesson .tag{
+  font-size:12px;
+  background:#e0f7fa;
+  color:#0369a1;
+  border-radius:999px;
+  padding:2px 8px;
+  width:max-content;
+}
+.lesson .name{font-weight:600;color:#111827}
+.lesson .desc{font-size:13px;color:#6b7280}
+.footer{
+  padding:28px 0;
+  background:#f9fafb;
+  color:#6b7280;
+  font-size:13px;
+  text-align:center;
+  border-top:1px solid #e5e7eb;
+}
+.footer strong{color:#111827}
 </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="brand">
-        <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
-        <span class="badge">16 buổi · 8 tuần</span>
-        <span class="badge">10/2025</span>
-      </div>
-      <h1 class="title">Tư duy lập trình & sáng tạo web cho trẻ em</h1>
-      <p class="subtitle">Không dạy con viết code – dạy con suy nghĩ như lập trình viên: phân tích, chia nhỏ, sắp xếp, thử sai, sáng tạo.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#lessons">Xem danh sách 16 buổi</a>
-        <a class="btn" href="#overview">Tổng quan chương trình</a>
-      </div>
+<header class="header">
+  <div class="badges">
+    <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
+    <span class="badge">16 BUỔI · 8 TUẦN</span>
+    <span class="badge">10/2025</span>
+  </div>
+  <h1 class="title">Tư duy lập trình & sáng tạo web cho trẻ em</h1>
+  <p class="subtitle">Không dạy con viết code – dạy con suy nghĩ như lập trình viên: phân tích, chia nhỏ, sắp xếp, thử sai và sáng tạo ra sản phẩm.</p>
+  <div class="hero-actions">
+    <a class="btn" href="#lessons">📚 Xem 16 buổi học</a>
+    <a class="btn" href="#overview">🧭 Tổng quan chương trình</a>
+  </div>
+</header>
+
+<main class="container">
+  <section id="overview" class="section">
+    <div class="card">
+      <h2>🧭 Tổng quan</h2>
+      <ul class="overview-list">
+        <li>Thời lượng: 8 tuần × 2 buổi/tuần = 16 buổi (mỗi buổi 60’)</li>
+        <li>Đối tượng: Học sinh 7–12 tuổi, không cần nền tảng trước</li>
+        <li>Kết quả: Mỗi bé hoàn thành 1 website cá nhân thật online</li>
+      </ul>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <section id="overview" class="section">
-      <div class="card">
-        <h2>🧭 Tổng quan</h2>
-        <ul class="overview-list">
-          <li>Thời lượng: 8 tuần × 2 buổi/tuần = 16 buổi (mỗi buổi 60’)</li>
-          <li>Đối tượng: Học sinh 7–12 tuổi, không cần nền tảng trước</li>
-          <li>Kết quả: Mỗi bé có một website cá nhân thật online</li>
-        </ul>
-      </div>
-    </section>
+  <section id="lessons" class="section">
+    <h2>📘 Danh sách 16 buổi học</h2>
+    <div class="grid">
+      <a class="lesson" href="lesson_01.html"><span class="tag">Bài 01</span><div class="name">Lệnh print() – Khi máy tính biết nói chuyện</div><div class="desc">Giúp máy "nói" bằng code.</div></a>
+      <a class="lesson" href="lesson_02.html"><span class="tag">Bài 02</span><div class="name">Lệnh input() – Khi máy tính biết lắng nghe</div><div class="desc">Máy trò chuyện với con người.</div></a>
+      <a class="lesson" href="lesson_03.html"><span class="tag">Bài 03</span><div class="name">Biến & Phép tính – Bộ nhớ của robot</div><div class="desc">Hiểu cách máy nhớ và tính toán.</div></a>
+      <a class="lesson" href="lesson_04.html"><span class="tag">Bài 04</span><div class="name">HTML cơ bản – Tạo ngôi nhà cho web</div><div class="desc">Xây khung trang web đầu tiên.</div></a>
+      <a class="lesson" href="lesson_05.html"><span class="tag">Bài 05</span><div class="name">CSS – Làm đẹp cho web</div><div class="desc">Trang trí và phối màu cho trang web.</div></a>
+      <a class="lesson" href="lesson_06.html"><span class="tag">Bài 06</span><div class="name">Danh sách & Liên kết – Điều hướng</div><div class="desc">Tạo menu và đường dẫn web.</div></a>
+      <a class="lesson" href="lesson_07.html"><span class="tag">Bài 07</span><div class="name">JavaScript cơ bản – Web biết phản ứng</div><div class="desc">Trang web tương tác.</div></a>
+      <a class="lesson" href="lesson_08.html"><span class="tag">Bài 08</span><div class="name">If/Else – Ra quyết định</div><div class="desc">Máy biết chọn hành động phù hợp.</div></a>
+      <a class="lesson" href="lesson_09.html"><span class="tag">Bài 09</span><div class="name">Vòng lặp – Khi robot lặp lại hành động</div><div class="desc">Tư duy lặp logic.</div></a>
+      <a class="lesson" href="lesson_10.html"><span class="tag">Bài 10</span><div class="name">Animation – Khi web chuyển động</div><div class="desc">Tạo hiệu ứng sinh động cho trang web.</div></a>
+      <a class="lesson" href="lesson_11.html"><span class="tag">Bài 11</span><div class="name">JS đổi màu nền – Thí nghiệm vui</div><div class="desc">Web biết “đổi cảm xúc”.</div></a>
+      <a class="lesson" href="lesson_12.html"><span class="tag">Bài 12</span><div class="name">Ghép nối HTML + CSS + JS</div><div class="desc">Kết hợp 3 sức mạnh của web.</div></a>
+      <a class="lesson" href="lesson_13.html"><span class="tag">Bài 13</span><div class="name">Phác thảo website cá nhân</div><div class="desc">Lên ý tưởng giao diện riêng.</div></a>
+      <a class="lesson" href="lesson_14.html"><span class="tag">Bài 14</span><div class="name">Xây dựng website cá nhân</div><div class="desc">Thực hiện trang web hoàn chỉnh.</div></a>
+      <a class="lesson" href="lesson_15.html"><span class="tag">Bài 15</span><div class="name">Kiểm thử & sửa lỗi (Debug)</div><div class="desc">Học cách “sửa lỗi như lập trình viên”.</div></a>
+      <a class="lesson" href="lesson_16.html"><span class="tag">Bài 16</span><div class="name">Trình diễn & chia sẻ sản phẩm</div><div class="desc">Tự tin giới thiệu website của mình.</div></a>
+    </div>
+  </section>
+</main>
 
-    <section id="lessons" class="section">
-      <h2>📚 Danh sách 16 buổi</h2>
-      <div class="grid">
-        <a class="lesson" href="lesson_01.html"><span class="tag">Bài 01</span><div class="name">Bài 1: Lệnh print() – Khi máy tính biết nói chuyện</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_02.html"><span class="tag">Bài 02</span><div class="name">Bài 2: Lệnh input() – Khi máy tính biết lắng nghe</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_03.html"><span class="tag">Bài 03</span><div class="name">Bài 3: Biến và phép tính – Bộ nhớ của robot</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_04.html"><span class="tag">Bài 04</span><div class="name">Bài 4: HTML cơ bản – Tạo ngôi nhà cho web</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_05.html"><span class="tag">Bài 05</span><div class="name">Bài 5: CSS – Làm đẹp cho web</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_06.html"><span class="tag">Bài 06</span><div class="name">Bài 6: Danh sách & Liên kết – Điều hướng</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_07.html"><span class="tag">Bài 07</span><div class="name">Bài 7: JavaScript cơ bản – Web biết phản ứng</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_08.html"><span class="tag">Bài 08</span><div class="name">Bài 8: If/Else – Ra quyết định</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_09.html"><span class="tag">Bài 09</span><div class="name">Bài 9: Vòng lặp – Lặp lại hành động</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_10.html"><span class="tag">Bài 10</span><div class="name">Bài 10: Animation – Khi web chuyển động</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_11.html"><span class="tag">Bài 11</span><div class="name">Bài 11: JS đổi màu nền – Thí nghiệm vui</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_12.html"><span class="tag">Bài 12</span><div class="name">Bài 12: Ghép nối HTML + CSS + JS</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_13.html"><span class="tag">Bài 13</span><div class="name">Bài 13: Phác thảo website cá nhân</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_14.html"><span class="tag">Bài 14</span><div class="name">Bài 14: Xây dựng website cá nhân</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_15.html"><span class="tag">Bài 15</span><div class="name">Bài 15: Kiểm thử & sửa lỗi (Debug)</div><div class="desc">Nhấp để xem cốt bài học</div></a><a class="lesson" href="lesson_16.html"><span class="tag">Bài 16</span><div class="name">Bài 16: Trình diễn & chia sẻ sản phẩm</div><div class="desc">Nhấp để xem cốt bài học</div></a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    © Hyper One – Bộ giáo án cốt (sườn) · Dùng cho GitHub Pages. Đặt tất cả file này ở thư mục gốc repo.
-  </footer>
+<footer class="footer">
+  <div class="container">
+    © <strong>Hyper One – Lesson 10/2025</strong> · Bản quyền thuộc Hyper One
+  </div>
+</footer>
 </body>
 </html>
