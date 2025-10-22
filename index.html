@@ -1,148 +1,177 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HYPER ONE · Tư duy lập trình & sáng tạo web cho trẻ em (16 buổi)</title>
+<title>Khóa học Lập trình AI cho Trẻ Em — Dashboard 5 Phase</title>
+
 <style>
+:root{
+  --text:#eaf3ff;--muted:#a3b9d3;--bg:#080c14;--card:#111b2c;
+  --accent1:#00ff9d;--accent2:#5ec6ff;--accent3:#ff9d5e;
+  --accent4:#a55eff;--accent5:#ff5ea1;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:"Poppins",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  background:linear-gradient(180deg,#f9fbff 0%,#ffffff 100%);
-  color:#1f2937;
-  line-height:1.6;
+  font-family:'Segoe UI',Roboto,Arial;
+  background:radial-gradient(900px 600px at 10% -10%,rgba(94,198,255,.1),transparent),
+             radial-gradient(1000px 600px at 80% 120%,rgba(0,255,157,.08),transparent),
+             linear-gradient(180deg,#060a12,#0d1526);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
 }
-a{text-decoration:none;color:inherit;transition:.2s}
-.container{max-width:1080px;margin:0 auto;padding:0 20px}
-.header{
-  padding:40px 20px 60px;
-  background:linear-gradient(120deg,#cce3ff 0%,#f3e8ff 100%);
-  border-bottom:1px solid #e5e7eb;
-  text-align:center;
+header{
+  text-align:center;padding:40px 20px 20px;position:relative;
 }
-.badges{margin-bottom:18px}
-.badge{
-  display:inline-block;
-  background:#fff;
-  color:#3b82f6;
-  border:1px solid #dbeafe;
-  border-radius:999px;
-  padding:5px 12px;
-  font-size:12px;
-  margin:0 5px;
+header img{
+  position:absolute;left:40px;top:30px;height:60px;
+  filter:drop-shadow(0 0 10px rgba(94,198,255,.6));
 }
-h1.title{font-size:30px;margin-bottom:10px;color:#111827}
-.subtitle{color:#374151;font-size:16px;max-width:680px;margin:0 auto}
-.hero-actions{margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{
-  background:#2563eb;
-  color:#fff;
-  border-radius:10px;
-  padding:10px 18px;
-  border:none;
-  font-weight:500;
+header h1{
+  font-size:32px;background:linear-gradient(90deg,var(--accent2),var(--accent1));
+  -webkit-background-clip:text;color:transparent;letter-spacing:1px;
 }
-.btn:hover{background:#1d4ed8}
-.section{padding:50px 0}
-h2{font-size:22px;margin-bottom:14px;color:#111827}
+header p{color:var(--muted);max-width:720px;margin:12px auto;font-size:16px;line-height:1.5}
+
+.container{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;padding:40px 20px 80px;max-width:1100px;margin:0 auto;
+}
+
+/* CARD BASE */
 .card{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:24px;
-  box-shadow:0 4px 15px rgba(0,0,0,.04);
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:28px 22px;position:relative;overflow:hidden;
+  transition:.5s;
 }
-.overview-list{list-style:disc;margin:10px 0 0 20px;color:#374151}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:18px}
-.lesson{
-  background:#ffffff;
-  border:1px solid #e5e7eb;
-  border-radius:14px;
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  transition:all .25s ease;
+.card:hover{transform:translateY(-6px)}
+.card::before{
+  content:"";position:absolute;inset:-2px;border-radius:inherit;
+  background:conic-gradient(from 180deg,var(--glow1),transparent 50%,var(--glow2));
+  filter:blur(20px);opacity:0;transition:.6s;z-index:-1;
 }
-.lesson:hover{
-  box-shadow:0 10px 25px rgba(0,0,0,.07);
-  transform:translateY(-3px);
+.card:hover::before{opacity:.6}
+.phase-num{font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:8px}
+h2{font-size:20px;margin-bottom:6px;color:#fff}
+p{font-size:15px;color:var(--muted);margin-bottom:8px;line-height:1.5}
+strong{color:#fff}
+.btn{
+  display:inline-block;margin-top:10px;padding:9px 15px;border-radius:10px;
+  text-decoration:none;background:linear-gradient(90deg,var(--glow1),var(--glow2));
+  color:#000;font-weight:600;transition:.3s;
 }
-.lesson .tag{
-  font-size:12px;
-  background:#e0f7fa;
-  color:#0369a1;
-  border-radius:999px;
-  padding:2px 8px;
-  width:max-content;
+.btn:hover{transform:scale(1.05);box-shadow:0 0 16px var(--glow1)}
+.age{
+  position:absolute;top:20px;right:20px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  padding:4px 10px;border-radius:8px;font-size:13px;color:var(--muted);
+  backdrop-filter:blur(8px);
 }
-.lesson .name{font-weight:600;color:#111827}
-.lesson .desc{font-size:13px;color:#6b7280}
-.footer{
-  padding:28px 0;
-  background:#f9fafb;
-  color:#6b7280;
-  font-size:13px;
-  text-align:center;
-  border-top:1px solid #e5e7eb;
+
+/* ICON ANIMATION */
+.icon{font-size:42px;margin-bottom:8px;text-shadow:0 0 14px rgba(255,255,255,.3)}
+.icon.spin{animation:spin 8s linear infinite}
+.icon.bounce{animation:bounce 3s ease-in-out infinite}
+.icon.pulse{animation:pulse 2.5s ease-in-out infinite}
+.icon.swing{animation:swing 4s ease-in-out infinite alternate}
+.icon.wave{animation:wave 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes wave{0%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(0)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+
+/* PHASE COLOR */
+.card.phase1{--glow1:var(--accent1);--glow2:var(--accent2)}
+.card.phase2{--glow1:var(--accent3);--glow2:var(--accent2)}
+.card.phase3{--glow1:#5ef8ff;--glow2:#fff08b}
+.card.phase4{--glow1:var(--accent4);--glow2:var(--accent2)}
+.card.phase5{--glow1:var(--accent5);--glow2:var(--accent2)}
+
+footer{
+  text-align:center;padding:40px 10px 60px;color:var(--muted);
+  font-size:14px;border-top:1px solid rgba(255,255,255,.1);
 }
-.footer strong{color:#111827}
+footer strong{color:var(--accent2)}
 </style>
 </head>
 <body>
-<header class="header">
-  <div class="badges">
-    <span class="badge">GIÁO ÁN LẬP TRÌNH TRẺ EM – TRINKET.IO</span>
-    <span class="badge">16 BUỔI · 8 TUẦN</span>
-    <span class="badge">10/2025</span>
-  </div>
-  <h1 class="title">Tư duy lập trình & sáng tạo web cho trẻ em</h1>
-  <p class="subtitle">Không dạy con viết code – dạy con suy nghĩ như lập trình viên: phân tích, chia nhỏ, sắp xếp, thử sai và sáng tạo ra sản phẩm.</p>
-  <div class="hero-actions">
-    <a class="btn" href="#lessons">📚 Xem 16 buổi học</a>
-    <a class="btn" href="#overview">🧭 Tổng quan chương trình</a>
-  </div>
+
+<header>
+  <img src="logo.jpg" alt="Logo">
+  <h1>Khóa học Lập trình AI cho Trẻ Em</h1>
+  <p>Hành trình 5 giai đoạn phát triển tư duy công nghệ – giúp trẻ hiểu AI, rèn logic và sáng tạo nên sản phẩm đầu tiên của mình.</p>
 </header>
 
 <main class="container">
-  <section id="overview" class="section">
-    <div class="card">
-      <h2>🧭 Tổng quan</h2>
-      <ul class="overview-list">
-        <li>Thời lượng: 8 tuần × 2 buổi/tuần = 16 buổi (mỗi buổi 60’)</li>
-        <li>Đối tượng: Học sinh 7–12 tuổi, không cần nền tảng trước</li>
-        <li>Kết quả: Mỗi bé hoàn thành 1 website cá nhân thật online</li>
-      </ul>
-    </div>
-  </section>
 
-  <section id="lessons" class="section">
-    <h2>📘 Danh sách 16 buổi học</h2>
-    <div class="grid">
-      <a class="lesson" href="lesson_01.html"><span class="tag">Bài 01</span><div class="name">Lệnh print() – Khi máy tính biết nói chuyện</div><div class="desc">Giúp máy "nói" bằng code.</div></a>
-      <a class="lesson" href="lesson_02.html"><span class="tag">Bài 02</span><div class="name">Lệnh input() – Khi máy tính biết lắng nghe</div><div class="desc">Máy trò chuyện với con người.</div></a>
-      <a class="lesson" href="lesson_03.html"><span class="tag">Bài 03</span><div class="name">Biến & Phép tính – Bộ nhớ của robot</div><div class="desc">Hiểu cách máy nhớ và tính toán.</div></a>
-      <a class="lesson" href="lesson_04.html"><span class="tag">Bài 04</span><div class="name">HTML cơ bản – Tạo ngôi nhà cho web</div><div class="desc">Xây khung trang web đầu tiên.</div></a>
-      <a class="lesson" href="lesson_05.html"><span class="tag">Bài 05</span><div class="name">CSS – Làm đẹp cho web</div><div class="desc">Trang trí và phối màu cho trang web.</div></a>
-      <a class="lesson" href="lesson_06.html"><span class="tag">Bài 06</span><div class="name">Danh sách & Liên kết – Điều hướng</div><div class="desc">Tạo menu và đường dẫn web.</div></a>
-      <a class="lesson" href="lesson_07.html"><span class="tag">Bài 07</span><div class="name">JavaScript cơ bản – Web biết phản ứng</div><div class="desc">Trang web tương tác.</div></a>
-      <a class="lesson" href="lesson_08.html"><span class="tag">Bài 08</span><div class="name">If/Else – Ra quyết định</div><div class="desc">Máy biết chọn hành động phù hợp.</div></a>
-      <a class="lesson" href="lesson_09.html"><span class="tag">Bài 09</span><div class="name">Vòng lặp – Khi robot lặp lại hành động</div><div class="desc">Tư duy lặp logic.</div></a>
-      <a class="lesson" href="lesson_10.html"><span class="tag">Bài 10</span><div class="name">Animation – Khi web chuyển động</div><div class="desc">Tạo hiệu ứng sinh động cho trang web.</div></a>
-      <a class="lesson" href="lesson_11.html"><span class="tag">Bài 11</span><div class="name">JS đổi màu nền – Thí nghiệm vui</div><div class="desc">Web biết “đổi cảm xúc”.</div></a>
-      <a class="lesson" href="lesson_12.html"><span class="tag">Bài 12</span><div class="name">Ghép nối HTML + CSS + JS</div><div class="desc">Kết hợp 3 sức mạnh của web.</div></a>
-      <a class="lesson" href="lesson_13.html"><span class="tag">Bài 13</span><div class="name">Phác thảo website cá nhân</div><div class="desc">Lên ý tưởng giao diện riêng.</div></a>
-      <a class="lesson" href="lesson_14.html"><span class="tag">Bài 14</span><div class="name">Xây dựng website cá nhân</div><div class="desc">Thực hiện trang web hoàn chỉnh.</div></a>
-      <a class="lesson" href="lesson_15.html"><span class="tag">Bài 15</span><div class="name">Kiểm thử & sửa lỗi (Debug)</div><div class="desc">Học cách “sửa lỗi như lập trình viên”.</div></a>
-      <a class="lesson" href="lesson_16.html"><span class="tag">Bài 16</span><div class="name">Trình diễn & chia sẻ sản phẩm</div><div class="desc">Tự tin giới thiệu website của mình.</div></a>
-    </div>
-  </section>
+  <!-- PHASE 1 -->
+  <div class="card phase1">
+    <span class="age">4–6 tuổi</span>
+    <div class="phase-num">PHASE 1</div>
+    <div class="icon spin">🎨</div>
+    <h2>Sơ cấp 1 – AI Storybook</h2>
+    <p><strong>Chủ đề:</strong> Làm bạn với AI – logic đơn giản, phân loại, kể chuyện.</p>
+    <p><strong>Sản phẩm:</strong> “AI Storybook – Con và Người bạn Thông minh đầu tiên”. Bé vẽ nhân vật, AI minh họa, bé kể lại bằng giọng nói.</p>
+    <p><strong>Hình thức:</strong> PDF in + QR video kể truyện.</p>
+    <a href="lesson_01.html" class="btn">Xem thêm</a>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="card phase2">
+    <span class="age">6–8 tuổi</span>
+    <div class="phase-num">PHASE 2</div>
+    <div class="icon bounce">🕹️</div>
+    <h2>Sơ cấp 2 – Game Đầu Tiên</h2>
+    <p><strong>Chủ đề:</strong> Làm quen Scratch / Blockly, học điều kiện “nếu – thì”.</p>
+    <p><strong>Sản phẩm:</strong> Mini-game hoặc website tĩnh bé tự lập trình.</p>
+    <p><strong>Hình thức:</strong> Xuất HTML + in QR “Chơi thử game của con”.</p>
+    <a href="lesson_02.html" class="btn">Xem thêm</a>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="card phase3">
+    <span class="age">8–10 tuổi</span>
+    <div class="phase-num">PHASE 3</div>
+    <div class="icon pulse">🌐</div>
+    <h2>Trung cấp 1 – Website của Con</h2>
+    <p><strong>Chủ đề:</strong> Thiết kế và lập trình website cơ bản.</p>
+    <p><strong>Sản phẩm:</strong> “Trang web nói về con” – website thật đầu tiên do bé tự viết nội dung.</p>
+    <p><strong>Hình thức:</strong> Link web + poster in trang chủ.</p>
+    <a href="lesson_03.html" class="btn">Xem thêm</a>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="card phase4">
+    <span class="age">10–12 tuổi</span>
+    <div class="phase-num">PHASE 4</div>
+    <div class="icon swing">🤖</div>
+    <h2>Trung cấp 2 – Bạn AI của Con</h2>
+    <p><strong>Chủ đề:</strong> Web AI cơ bản, robot mô phỏng.</p>
+    <p><strong>Sản phẩm:</strong> “Bạn AI của con” – website/robot mô phỏng phản hồi lời nói, chuyển động.</p>
+    <p><strong>Hình thức:</strong> Video demo + QR xem bản chạy thử.</p>
+    <a href="lesson_04.html" class="btn">Xem thêm</a>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="card phase5">
+    <span class="age">12+ tuổi</span>
+    <div class="phase-num">PHASE 5</div>
+    <div class="icon wave">🚀</div>
+    <h2>Cao cấp – My First AI App</h2>
+    <p><strong>Chủ đề:</strong> Lập trình Python + AI API, sáng tạo ứng dụng thực tế.</p>
+    <p><strong>Sản phẩm:</strong> “My First AI App” – ứng dụng đầu tiên bé tự viết (AI viết thư, chatbot mini …).</p>
+    <p><strong>Hình thức:</strong> Link app thật + chứng nhận hoàn thành.</p>
+    <a href="lesson_05.html" class="btn">Xem thêm</a>
+  </div>
+
 </main>
 
-<footer class="footer">
-  <div class="container">
-    © <strong>Hyper One – Lesson 10/2025</strong> · Bản quyền thuộc Hyper One
-  </div>
+<footer>
+  <p><strong>© 2025 HYPER ONE</strong></p>
+  <p>Từ “🎨 AI Storybook” đến “🚀 My First AI App”, mỗi sản phẩm là một dấu mốc tự hào của gia đình.</p>
 </footer>
+
 </body>
 </html>
