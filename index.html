@@ -7,49 +7,122 @@
 
 <style>
 :root{
-  --text:#eaf3ff;--muted:#a3b9d3;--bg:#080c14;--card:#111b2c;
-  --accent1:#00ff9d;--accent2:#5ec6ff;--accent3:#ff9d5e;
-  --accent4:#a55eff;--accent5:#ff5ea1;
+    --text:#eaf3ff;--muted:#a3b9d3;--bg:#080c14;--card:#111b2c;
+    --accent1:#00ff9d;--accent2:#5ec6ff;--accent3:#ff9d5e;
+    --accent4:#a55eff;--accent5:#ff5ea1;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:'Segoe UI',Roboto,Arial;
-  background:radial-gradient(900px 600px at 10% -10%,rgba(94,198,255,.1),transparent),
-             radial-gradient(1000px 600px at 80% 120%,rgba(0,255,157,.08),transparent),
-             linear-gradient(180deg,#060a12,#0d1526);
-  color:var(--text);
-  overflow-x:hidden;
-  min-height:100vh;
+    font-family:'Segoe UI',Roboto,Arial;
+    background:radial-gradient(900px 600px at 10% -10%,rgba(94,198,255,.1),transparent),
+                radial-gradient(1000px 600px at 80% 120%,rgba(0,255,157,.08),transparent),
+                linear-gradient(180deg,#060a12,#0d1526);
+    color:var(--text);
+    overflow-x:hidden;
+    min-height:100vh;
 }
 header{
-  text-align:center;padding:40px 20px 20px;position:relative;
+    text-align:center;padding:40px 20px 20px;position:relative;
 }
+
+/* Container cho Logo và Tabs: Đảm bảo xếp dọc (column) */
+.logo-area {
+    position: absolute;
+    left: 40px;
+    top: 30px;
+    display: flex; 
+    flex-direction: column; /* RẤT QUAN TRỌNG: Xếp logo và khu vực tabs theo chiều dọc */
+    align-items: flex-start; 
+    gap: 10px; 
+}
+
+/* Container chứa cả hai tab logo: Đảm bảo xếp dọc (column) */
+.header-tabs {
+    display: flex;
+    flex-direction: column; /* RẤT QUAN TRỌNG: Xếp hai tab dọc */
+    gap: 5px; 
+    padding-left: 5px; 
+}
+
 header img{
-  position:absolute;left:40px;top:30px;height:60px;
-  filter:drop-shadow(0 0 10px rgba(94,198,255,.6));
+    height:60px;
+    filter:drop-shadow(0 0 10px rgba(94,198,255,.6));
 }
+
+/* Style cho Tab */
+.logo-tag {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent2);
+    padding: 4px 8px; 
+    border: 1px solid var(--accent2);
+    border-radius: 6px;
+    background: rgba(94, 198, 255, 0.1);
+    backdrop-filter: blur(5px);
+    text-transform: uppercase;
+    display: inline-block; 
+    animation: tagGlow 3s ease-in-out infinite alternate;
+}
+.logo-tag.secondary {
+    color: var(--accent1);
+    border-color: var(--accent1);
+    background: rgba(0, 255, 157, 0.1);
+}
+
+@keyframes tagGlow {
+    0% { opacity: 0.7; box-shadow: 0 0 5px rgba(94, 198, 255, 0.4); }
+    100% { opacity: 1; box-shadow: 0 0 12px rgba(94, 198, 255, 0.8); }
+}
+
 header h1{
-  font-size:32px;background:linear-gradient(90deg,var(--accent2),var(--accent1));
-  -webkit-background-clip:text;color:transparent;letter-spacing:1px;
+    font-size:32px;background:linear-gradient(90deg,var(--accent2),var(--accent1));
+    -webkit-background-clip:text;color:transparent;letter-spacing:1px;
+    animation: textPulse 4s ease-in-out infinite alternate;
+    margin-bottom: 0; 
 }
-header p{color:var(--muted);max-width:720px;margin:12px auto;font-size:16px;line-height:1.5}
+@keyframes textPulse {
+    0% { filter: drop-shadow(0 0 0px var(--accent2)); opacity: 1; }
+    100% { filter: drop-shadow(0 0 8px var(--accent2)); opacity: 0.95; }
+}
+
+/* Tab mô tả mới, nằm ở giữa màn hình */
+.header-description-tag {
+    display: inline-block;
+    max-width: 720px;
+    margin: 10px auto 20px auto; 
+    font-size: 15px;
+    font-style: italic;
+    color: var(--accent3); 
+    padding: 8px 15px;
+    border: 1px solid var(--accent3);
+    border-radius: 10px;
+    background: rgba(255, 157, 94, 0.1);
+    box-shadow: 0 0 15px rgba(255, 157, 94, 0.3);
+    line-height: 1.5;
+    text-align: center;
+}
+
+header p{
+    display: none; 
+}
 
 .container{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:28px;padding:40px 20px 80px;max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;padding:40px 20px 80px;max-width:1100px;margin:0 auto;
 }
 
 /* CARD BASE */
 .card{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;padding:28px 22px;position:relative;overflow:hidden;
-  transition:.5s;
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;padding:28px 22px;position:relative;overflow:hidden;
+    transition:.5s;
 }
 .card:hover{transform:translateY(-6px)}
 .card::before{
-  content:"";position:absolute;inset:-2px;border-radius:inherit;
-  background:conic-gradient(from 180deg,var(--glow1),transparent 50%,var(--glow2));
-  filter:blur(20px);opacity:0;transition:.6s;z-index:-1;
+    content:"";position:absolute;inset:-2px;border-radius:inherit;
+    background:conic-gradient(from 180deg,var(--glow1),transparent 50%,var(--glow2));
+    filter:blur(20px);opacity:0;transition:.6s;z-index:-1;
 }
 .card:hover::before{opacity:.6}
 .phase-num{font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:8px}
@@ -57,30 +130,146 @@ h2{font-size:20px;margin-bottom:6px;color:#fff}
 p{font-size:15px;color:var(--muted);margin-bottom:8px;line-height:1.5}
 strong{color:#fff}
 .btn{
-  display:inline-block;margin-top:10px;padding:9px 15px;border-radius:10px;
-  text-decoration:none;background:linear-gradient(90deg,var(--glow1),var(--glow2));
-  color:#000;font-weight:600;transition:.3s;
+    display:inline-block;margin-top:10px;padding:9px 15px;border-radius:10px;
+    text-decoration:none;background:linear-gradient(90deg,var(--glow1),var(--glow2));
+    color:#000;font-weight:600;transition:.3s;
+    animation: btnGlow 3s ease-in-out infinite;
 }
 .btn:hover{transform:scale(1.05);box-shadow:0 0 16px var(--glow1)}
-.age{
-  position:absolute;top:20px;right:20px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-  padding:4px 10px;border-radius:8px;font-size:13px;color:var(--muted);
-  backdrop-filter:blur(8px);
+@keyframes btnGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 0 18px var(--glow1); }
 }
 
-/* ICON ANIMATION */
-.icon{font-size:42px;margin-bottom:8px;text-shadow:0 0 14px rgba(255,255,255,.3)}
-.icon.spin{animation:spin 8s linear infinite}
-.icon.bounce{animation:bounce 3s ease-in-out infinite}
-.icon.pulse{animation:pulse 2.5s ease-in-out infinite}
-.icon.swing{animation:swing 4s ease-in-out infinite alternate}
-.icon.wave{animation:wave 5s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-@keyframes wave{0%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(0)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+.age{
+    position:absolute;top:20px;right:20px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+    padding:4px 10px;border-radius:8px;font-size:13px;color:var(--muted);
+    backdrop-filter:blur(8px);
+}
+
+/* ICON BASE & ANIMATIONS */
+.icon{
+    font-size:42px;margin-bottom:8px;text-shadow:0 0 14px rgba(255,255,255,.3);
+    display:inline-block;
+    position:relative;
+    width:42px;
+    height:42px;
+    overflow: visible; 
+}
+
+/* Storybook - Chảy mực tùm lum */
+.icon.storybook {
+    animation: inkSpill 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0));
+}
+@keyframes inkSpill {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0))
+                drop-shadow(0 0 0px var(--accent1))
+                drop-shadow(0 0 0px var(--accent2));
+        transform: translateY(0);
+    }
+    25% {
+        filter: drop-shadow(0 5px 8px rgba(0, 255, 157, 0.5))
+                drop-shadow(5px 10px 10px rgba(94, 198, 255, 0.4));
+        transform: translateY(5px);
+    }
+    50% {
+        filter: drop-shadow(-5px 15px 12px rgba(255, 157, 94, 0.6))
+                drop-shadow(0px 20px 15px rgba(255, 94, 161, 0.5));
+        transform: translateY(10px);
+    }
+    75% {
+        filter: drop-shadow(0 10px 8px rgba(0, 255, 157, 0.4))
+                drop-shadow(-5px 5px 10px rgba(94, 198, 255, 0.3));
+        transform: translateY(5px);
+    }
+    100% {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0));
+        transform: translateY(0);
+    }
+}
+
+
+/* Game Controller Wiggle */
+.icon.controller {
+    font-size: 38px;
+    animation: controllerWiggle 1s ease-in-out infinite alternate;
+    transform-origin: center bottom;
+}
+@keyframes controllerWiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Earth Orbiting Sun */
+.icon.earth-orbit {
+    font-size: 0;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 8px auto;
+    position: relative;
+    border-radius: 50%;
+}
+.icon.earth-orbit::before {
+    content: '☀️';
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.icon.earth-orbit::after {
+    content: '🌍';
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: orbit 8s linear infinite;
+    transform-origin: 50% 30px;
+    z-index: 1;
+}
+@keyframes orbit {
+    0% { transform: rotate(0deg) translateX(25px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(25px) rotate(-360deg); }
+}
+
+
+/* Robot walking */
+.icon.robot-walk {
+    font-size: 42px;
+    animation: robotWalk 4s ease-in-out infinite alternate;
+}
+@keyframes robotWalk {
+    0% { transform: translateX(-15px) rotateY(0deg); }
+    50% { transform: translateX(15px) rotateY(0deg); }
+    50.1% { transform: translateX(15px) rotateY(180deg); }
+    100% { transform: translateX(-15px) rotateY(180deg); }
+}
+
+
+/* Rocket launch loop */
+.icon.rocket-launch {
+    font-size: 42px;
+    animation: rocketLaunch 6s ease-out infinite;
+    transform-origin: center bottom;
+}
+@keyframes rocketLaunch {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    20% { transform: translateY(-50px) rotate(5deg); opacity: 1; }
+    40% { transform: translateY(-100px) rotate(-5deg); opacity: 1; }
+    60% { transform: translateY(-150px) rotate(0deg); opacity: 1; }
+    70% { transform: translateY(-200px); opacity: 0; }
+    71% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
 
 /* PHASE COLOR */
 .card.phase1{--glow1:var(--accent1);--glow2:var(--accent2)}
@@ -90,8 +279,8 @@ strong{color:#fff}
 .card.phase5{--glow1:var(--accent5);--glow2:var(--accent2)}
 
 footer{
-  text-align:center;padding:40px 10px 60px;color:var(--muted);
-  font-size:14px;border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;padding:40px 10px 60px;color:var(--muted);
+    font-size:14px;border-top:1px solid rgba(255,255,255,.1);
 }
 footer strong{color:var(--accent2)}
 </style>
@@ -99,78 +288,83 @@ footer strong{color:var(--accent2)}
 <body>
 
 <header>
-  <img src="logo.jpg" alt="Logo">
-  <h1>Khóa học Lập trình AI cho Trẻ Em</h1>
-  <p>Hành trình 5 giai đoạn phát triển tư duy công nghệ – giúp trẻ hiểu AI, rèn logic và sáng tạo nên sản phẩm đầu tiên của mình.</p>
+    <div class="logo-area">
+        <img src="logo.jpg" alt="Logo">
+        <div class="header-tabs">
+            <span class="logo-tag">POWERED BY HYPER ONE</span>
+            <span class="logo-tag secondary">AI CODING COURSE</span>
+        </div>
+    </div>
+    
+    <h1>Khóa học Lập trình AI cho Trẻ Em</h1>
+
+    <span class="header-description-tag">Hành trình 5 giai đoạn phát triển tư duy công nghệ – giúp trẻ hiểu AI, rèn logic và sáng tạo nên sản phẩm đầu tiên của mình.</span>
+
+    <p></p> 
 </header>
 
 <main class="container">
 
-  <!-- PHASE 1 -->
-  <div class="card phase1">
-    <span class="age">4–6 tuổi</span>
-    <div class="phase-num">PHASE 1</div>
-    <div class="icon spin">🎨</div>
-    <h2>Sơ cấp 1 – AI Storybook</h2>
-    <p><strong>Chủ đề:</strong> Làm bạn với AI – logic đơn giản, phân loại, kể chuyện.</p>
-    <p><strong>Sản phẩm:</strong> “AI Storybook – Con và Người bạn Thông minh đầu tiên”. Bé vẽ nhân vật, AI minh họa, bé kể lại bằng giọng nói.</p>
-    <p><strong>Hình thức:</strong> PDF in + QR video kể truyện.</p>
-    <a href="lesson_01.html" class="btn">Xem thêm</a>
-  </div>
+    <div class="card phase1">
+        <span class="age">4–6 tuổi</span>
+        <div class="phase-num">PHASE 1</div>
+        <div class="icon storybook">🎨</div>
+        <h2>Sơ cấp 1 – AI Storybook</h2>
+        <p><strong>Chủ đề:</strong> Làm bạn với AI – logic đơn giản, phân loại, kể chuyện.</p>
+        <p><strong>Sản phẩm:</strong> “AI Storybook – Con và Người bạn Thông minh đầu tiên”. Bé vẽ nhân vật, AI minh họa, bé kể lại bằng giọng nói.</p>
+        <p><strong>Hình thức:</strong> PDF in + QR video kể truyện.</p>
+        <a href="lesson_01.html" class="btn">Xem thêm</a>
+    </div>
 
-  <!-- PHASE 2 -->
-  <div class="card phase2">
-    <span class="age">6–8 tuổi</span>
-    <div class="phase-num">PHASE 2</div>
-    <div class="icon bounce">🕹️</div>
-    <h2>Sơ cấp 2 – Game Đầu Tiên</h2>
-    <p><strong>Chủ đề:</strong> Làm quen Scratch / Blockly, học điều kiện “nếu – thì”.</p>
-    <p><strong>Sản phẩm:</strong> Mini-game hoặc website tĩnh bé tự lập trình.</p>
-    <p><strong>Hình thức:</strong> Xuất HTML + in QR “Chơi thử game của con”.</p>
-    <a href="lesson_02.html" class="btn">Xem thêm</a>
-  </div>
+    <div class="card phase2">
+        <span class="age">6–8 tuổi</span>
+        <div class="phase-num">PHASE 2</div>
+        <div class="icon controller">🕹️</div>
+        <h2>Sơ cấp 2 – Game Đầu Tiên</h2>
+        <p><strong>Chủ đề:</strong> Làm quen Scratch / Blockly, học điều kiện “nếu – thì”.</p>
+        <p><strong>Sản phẩm:</strong> Mini-game hoặc website tĩnh bé tự lập trình.</p>
+        <p><strong>Hình thức:</strong> Xuất HTML + in QR “Chơi thử game của con”.</p>
+        <a href="lesson_02.html" class="btn">Xem thêm</a>
+    </div>
 
-  <!-- PHASE 3 -->
-  <div class="card phase3">
-    <span class="age">8–10 tuổi</span>
-    <div class="phase-num">PHASE 3</div>
-    <div class="icon pulse">🌐</div>
-    <h2>Trung cấp 1 – Website của Con</h2>
-    <p><strong>Chủ đề:</strong> Thiết kế và lập trình website cơ bản.</p>
-    <p><strong>Sản phẩm:</strong> “Trang web nói về con” – website thật đầu tiên do bé tự viết nội dung.</p>
-    <p><strong>Hình thức:</strong> Link web + poster in trang chủ.</p>
-    <a href="lesson_03.html" class="btn">Xem thêm</a>
-  </div>
+    <div class="card phase3">
+        <span class="age">8–10 tuổi</span>
+        <div class="phase-num">PHASE 3</div>
+        <div class="icon earth-orbit"></div>
+        <h2>Trung cấp 1 – Website của Con</h2>
+        <p><strong>Chủ đề:</strong> Thiết kế và lập trình website cơ bản.</p>
+        <p><strong>Sản phẩm:</strong> “Trang web nói về con” – website thật đầu tiên do bé tự viết nội dung.</p>
+        <p><strong>Hình thức:</strong> Link web + poster in trang chủ.</p>
+        <a href="lesson_03.html" class="btn">Xem thêm</a>
+    </div>
 
-  <!-- PHASE 4 -->
-  <div class="card phase4">
-    <span class="age">10–12 tuổi</span>
-    <div class="phase-num">PHASE 4</div>
-    <div class="icon swing">🤖</div>
-    <h2>Trung cấp 2 – Bạn AI của Con</h2>
-    <p><strong>Chủ đề:</strong> Web AI cơ bản, robot mô phỏng.</p>
-    <p><strong>Sản phẩm:</strong> “Bạn AI của con” – website/robot mô phỏng phản hồi lời nói, chuyển động.</p>
-    <p><strong>Hình thức:</strong> Video demo + QR xem bản chạy thử.</p>
-    <a href="lesson_04.html" class="btn">Xem thêm</a>
-  </div>
+    <div class="card phase4">
+        <span class="age">10–12 tuổi</span>
+        <div class="phase-num">PHASE 4</div>
+        <div class="icon robot-walk">🤖</div>
+        <h2>Trung cấp 2 – Bạn AI của Con</h2>
+        <p><strong>Chủ đề:</strong> Web AI cơ bản, robot mô phỏng.</p>
+        <p><strong>Sản phẩm:</strong> “Bạn AI của con” – website/robot mô phỏng phản hồi lời nói, chuyển động.</p>
+        <p><strong>Hình thức:</strong> Video demo + QR xem bản chạy thử.</p>
+        <a href="lesson_04.html" class="btn">Xem thêm</a>
+    </div>
 
-  <!-- PHASE 5 -->
-  <div class="card phase5">
-    <span class="age">12+ tuổi</span>
-    <div class="phase-num">PHASE 5</div>
-    <div class="icon wave">🚀</div>
-    <h2>Cao cấp – My First AI App</h2>
-    <p><strong>Chủ đề:</strong> Lập trình Python + AI API, sáng tạo ứng dụng thực tế.</p>
-    <p><strong>Sản phẩm:</strong> “My First AI App” – ứng dụng đầu tiên bé tự viết (AI viết thư, chatbot mini …).</p>
-    <p><strong>Hình thức:</strong> Link app thật + chứng nhận hoàn thành.</p>
-    <a href="lesson_05.html" class="btn">Xem thêm</a>
-  </div>
+    <div class="card phase5">
+        <span class="age">12+ tuổi</span>
+        <div class="phase-num">PHASE 5</div>
+        <div class="icon rocket-launch">🚀</div>
+        <h2>Cao cấp – My First AI App</h2>
+        <p><strong>Chủ đề:</strong> Lập trình Python + AI API, sáng tạo ứng dụng thực tế.</p>
+        <p><strong>Sản phẩm:</strong> “My First AI App” – ứng dụng đầu tiên bé tự viết (AI viết thư, chatbot mini …).</p>
+        <p><strong>Hình thức:</strong> Link app thật + chứng nhận hoàn thành.</p>
+        <a href="lesson_05.html" class="btn">Xem thêm</a>
+    </div>
 
 </main>
 
 <footer>
-  <p><strong>© 2025 HYPER ONE</strong></p>
-  <p>Từ “🎨 AI Storybook” đến “🚀 My First AI App”, mỗi sản phẩm là một dấu mốc tự hào của gia đình.</p>
+    <p><strong>© 2025 HYPER ONE</strong></p>
+    <p>Từ “🎨 AI Storybook” đến “🚀 My First AI App”, mỗi sản phẩm là một dấu mốc tự hào của gia đình.</p>
 </footer>
 
 </body>
