@@ -25,13 +25,13 @@ header{
     text-align:center;padding:40px 20px 20px;position:relative;
 }
 
-/* Container cho Logo và Tabs: Đảm bảo xếp dọc (column) */
+/* Container cho Logo và Tabs (Đã chỉnh sang xếp dọc cho các tabs) */
 .logo-area {
     position: absolute;
     left: 40px;
     top: 30px;
     display: flex; 
-    flex-direction: column; /* RẤT QUAN TRỌNG: Xếp logo và khu vực tabs theo chiều dọc */
+    flex-direction: column; 
     align-items: flex-start; 
     gap: 10px; 
 }
@@ -39,7 +39,7 @@ header{
 /* Container chứa cả hai tab logo: Đảm bảo xếp dọc (column) */
 .header-tabs {
     display: flex;
-    flex-direction: column; /* RẤT QUAN TRỌNG: Xếp hai tab dọc */
+    flex-direction: column; 
     gap: 5px; 
     padding-left: 5px; 
 }
@@ -107,9 +107,61 @@ header p{
     display: none; 
 }
 
+/* BỐ CỤC CHÍNH */
 .container{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:28px;padding:40px 20px 80px;max-width:1100px;margin:0 auto;
+    display:grid;
+    /* Giữ nguyên bố cục lưới mặc định (2-3 cột) cho desktop */
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    padding:40px 20px 80px;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+/* MEDIA QUERY CHO MOBILE - ĐÂY LÀ PHẦN CHỈNH SỬA QUAN TRỌNG */
+@media (max-width: 650px) {
+    /* Điều chỉnh logo area */
+    .logo-area {
+        position: static; /* Bỏ position absolute để nó trôi theo dòng chảy của header */
+        flex-direction: row; /* Chuyển logo và tabs sang xếp ngang để tiết kiệm chiều cao */
+        align-items: center;
+        justify-content: center; /* Căn giữa logo và tabs */
+        margin: 0 auto;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+    .header-tabs {
+        flex-direction: row; /* Chuyển hai tab xếp ngang */
+        flex-wrap: wrap; /* Cho phép các tab xuống dòng nếu cần */
+        justify-content: center;
+        padding-left: 0;
+    }
+    header img {
+        height: 40px; /* Giảm kích thước logo */
+    }
+    
+    /* Căn lại H1 và Tab mô tả */
+    header h1 {
+        font-size: 26px; /* Giảm kích thước H1 */
+    }
+    .header-description-tag {
+        font-size: 14px; /* Giảm kích thước font mô tả */
+        margin: 10px 10px 20px 10px;
+        max-width: 95%;
+    }
+    
+    /* Điều chỉnh bố cục thẻ (card) trên màn hình hẹp */
+    .container {
+        /* Buộc chỉ có 1 cột, nhưng phải tối ưu padding */
+        grid-template-columns: 1fr; /* Chỉ 1 cột duy nhất trên mobile */
+        padding: 20px 15px 50px 15px;
+        gap: 20px;
+    }
+    .card {
+        padding: 20px; /* Giảm padding thẻ */
+        border-radius: 15px;
+    }
+    
 }
 
 /* CARD BASE */
@@ -148,7 +200,7 @@ strong{color:#fff}
     backdrop-filter:blur(8px);
 }
 
-/* ICON BASE & ANIMATIONS */
+/* ICON BASE & ANIMATIONS (GIỮ NGUYÊN) */
 .icon{
     font-size:42px;margin-bottom:8px;text-shadow:0 0 14px rgba(255,255,255,.3);
     display:inline-block;
@@ -157,6 +209,8 @@ strong{color:#fff}
     height:42px;
     overflow: visible; 
 }
+/* ... Các keyframes animation (storybook, controller, earth-orbit, robot-walk, rocket-launch) ... */
+/* Tôi giữ nguyên keyframes để tránh mã quá dài, giả định chúng vẫn hoạt động. */
 
 /* Storybook - Chảy mực tùm lum */
 .icon.storybook {
@@ -269,7 +323,6 @@ strong{color:#fff}
     71% { transform: translateY(50px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
-
 
 /* PHASE COLOR */
 .card.phase1{--glow1:var(--accent1);--glow2:var(--accent2)}
